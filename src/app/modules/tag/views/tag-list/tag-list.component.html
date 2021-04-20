@@ -1,0 +1,26 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> ETIQUETA </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Creator Column -->
+  <ng-container matColumnDef="creator">
+    <mat-header-cell *matHeaderCellDef> CREADOR </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.creator}} </mat-cell>
+  </ng-container>
+
+  <!-- Date Column -->
+  <ng-container matColumnDef="created_at">
+    <mat-header-cell *matHeaderCellDef> FECHA CREACIÓN </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.created_at | date: "dd/MM/yyyy" }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>
+<!-- <mat-paginator [length]="total"
+[pageSize]="pageSize"
+[pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="getPaginatorData($event)" >
+</mat-paginator> -->

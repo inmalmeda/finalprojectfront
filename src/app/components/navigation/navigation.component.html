@@ -1,0 +1,49 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <span id ="titleNav">
+    <mat-toolbar [id]="(isHandset$ | async) ? 'titleNavMin' : 'titleNavMax'"
+      [style] = "(isHandset$ | async) ? 'display:flex' : 'display:block'">
+      <app-logo-svg></app-logo-svg>
+        Experts
+      <div id="buttonNav">
+        <button mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+  </span>
+    <mat-nav-list>
+      <a mat-list-item routerLink='/experts' (click)="loadRoute('experts')"
+        [class] = "(isExpert) ? 'buttonActive' : 'buttonNoActive'">
+        <mat-icon>group</mat-icon>
+        Expertos
+      </a>
+      <a mat-list-item routerLink='/tags' (click)="loadRoute('tags')"
+      [class] = "(isTag) ? 'buttonActive' : 'buttonNoActive'">
+      <mat-icon>local_offer</mat-icon>
+      Etiquetas
+    </a>
+    </mat-nav-list>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar  id="titleNavMain">
+      <button mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+       <mat-icon>menu</mat-icon>
+      </button>
+      <app-header id="titleNavHeader"></app-header>
+      <span class="spacer"></span>
+      <button mat-button id= "buttonNavNew">
+        <mat-icon>add</mat-icon>
+        {{actionTitle}}
+      </button>
+    </mat-toolbar>
+  <div class="content" role="main">
+     <router-outlet>
+     </router-outlet>
+  </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

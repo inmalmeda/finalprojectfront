@@ -1,0 +1,95 @@
+.sidenav-container {
+  height: 100%;
+  color: #131340;
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  position: absolute;
+  width: 318px;
+  height: 1080px;
+  left: 0px;
+  top: 0px;
+  background: #FFFFFF;
+  box-shadow: 2px 0px 16px rgba(117, 114, 150, 0.15);
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+#titleNav {
+  margin: 30px;
+  text-align: center;
+}
+
+#titleNavMax{
+  font-weight: 600;
+  font-size:35px;
+}
+
+#buttonNav{
+  margin-left:20px;
+}
+
+#titleNavMin{
+  color: #131340;
+  font-weight: 400;
+  font-size:25px;
+
+}
+
+#titleNavMain{
+  box-shadow: 0px 2px 6px rgba(117, 114, 150, 0.15);
+}
+
+#titleNavHeader{
+  color:#131340;
+  font-weight: 700;
+  display: block;
+  font-size: 26px;
+}
+
+.mat-toolbar {
+  background: #FFFFFF;
+  height: 115px;
+  padding:36px 40px 40px 40px;
+}
+
+.mat-nav-list a{
+  font-weight: 600;
+  font-size:16px;
+  margin-left:40px;
+}
+
+.buttonActive{
+  color: #0ED28C;
+}
+
+.buttonNoActive{
+  color: #A3A3B4;
+}
+
+#buttonNavNew{
+  width:auto;
+  background-color: #0ED28C;
+  color:white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+
+
+
+
