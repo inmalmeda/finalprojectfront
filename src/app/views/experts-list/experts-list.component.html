@@ -23,7 +23,9 @@
        </span>
      </div>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element" class="rowTable"> {{element.state}} </mat-cell>
+    <mat-cell *matCellDef="let element" class="rowTable">
+      <app-type-states [text] = 'element.state'></app-type-states>
+      </mat-cell>
   </ng-container>
 
   <!-- Tags Column -->
@@ -37,7 +39,7 @@
      </div>
     </mat-header-cell>
     <mat-cell *matCellDef="let element" class="rowTable">
-      {{element.tags }}
+      <app-type-tag *ngFor="let tag of element.tags" [tag]="tag"></app-type-tag>
     </mat-cell>
   </ng-container>
 
@@ -52,7 +54,9 @@
        </span>
      </div>
     </mat-header-cell>
-    <mat-cell *matCellDef="let element" class="rowTable"> {{element.score}} </mat-cell>
+    <mat-cell *matCellDef="let element" class="rowTable">
+      <app-type-score [score] = "element.score"></app-type-score>
+    </mat-cell>
   </ng-container>
 
 

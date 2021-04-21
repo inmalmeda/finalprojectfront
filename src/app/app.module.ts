@@ -22,13 +22,15 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
-
 import { TagsListComponent } from './views/tags-list/tags-list.component';
 import { TagPageComponent } from './pages/tag/tag-page/tag-page.component';
 import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-page.component';
 import { ExpertsListComponent } from './views/experts-list/experts-list.component';
 import { ExpertPageComponent } from './pages/expert/expert-page/expert-page.component';
 import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/expert-detail-page.component';
+import { TypeStatesComponent } from './components/type-states/type-states.component';
+import { TypeTagComponent } from './components/type-tag/type-tag.component';
+import { TypeScoreComponent } from './components/type-score/type-score.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,10 @@ import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/exp
     TagDetailPageComponent,
     ExpertsListComponent,
     ExpertPageComponent,
-    ExpertDetailPageComponent
+    ExpertDetailPageComponent,
+    TypeStatesComponent,
+    TypeTagComponent,
+    TypeScoreComponent
   ],
   imports: [
     BrowserModule,

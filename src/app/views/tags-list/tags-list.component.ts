@@ -18,10 +18,8 @@ export class TagsListComponent implements OnInit, DoCheck {
   filterTags: FiltersTag = new FiltersTag('', 0, 0)
   displayedColumns: string[] = ['name', 'creator', 'created_at'];
   dataSource: any
-  mouseOver = false
-  mouseLeave = true
+  mouseOver: number = -1
   buttonDelete = false
-
 
   @Output() manipulateEventPaginator: EventEmitter<PageEvent> = new EventEmitter<PageEvent>()
 
@@ -51,21 +49,16 @@ export class TagsListComponent implements OnInit, DoCheck {
     this.tagUtilService.getAllTags()
   }
 
-  showButton(event: Event) {
-    this.mouseOver = true
-    this.mouseLeave = !this.mouseOver
+  showButton(event: number) {
+     this.mouseOver = event
     this.buttonDelete = true
-    console.log(event)
   }
 
-  hideButton(event: Event) {
-    this.mouseOver = false
-    this.mouseLeave = !this.mouseOver
+/*   hideButton() {
     this.buttonDelete = false
-  }
+  } */
 
   deleteTag(event: Event) {
-    console.log(event)
 
   }
 }
