@@ -1,0 +1,5 @@
+<app-tags-list></app-tags-list>
+<mat-paginator [length]="totalTags"
+[pageSize]="filterTags.page"
+[pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="getPaginatorData($event)" >
+</mat-paginator>

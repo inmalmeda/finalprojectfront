@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { PreloadingStrategy, RouterModule, Routes } from '@angular/router';
-import { OnDemand } from './services/load/strategies/on-demand.strategy';
+import {  RouterModule, Routes } from '@angular/router';
+import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/expert-detail-page.component';
+import { ExpertPageComponent } from './pages/expert/expert-page/expert-page.component';
+import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-page.component';
+import { TagPageComponent } from './pages/tag/tag-page/tag-page.component';
 
 const routes: Routes = [
   {
@@ -10,27 +13,25 @@ const routes: Routes = [
   },
   {
     path: 'experts',
-    loadChildren: () => import('./modules/expert/expert.module').then(m => m.ExpertModule),
-    data: {
-      preload: true
-    }
+    component: ExpertPageComponent
+  },
+  {
+    path: 'experts/:id',
+    component: ExpertDetailPageComponent
   },
   {
     path: 'tags',
-    loadChildren: () => import('./modules/tag/tag.module').then(m => m.TagModule),
-    data: {
-      preload: false
-    }
+    component: TagPageComponent
+  },
+  {
+    path: 'tags/:id',
+    component: TagDetailPageComponent
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(
-    routes,
-    {
-      preloadingStrategy: OnDemand
-    }
-
+    routes
   )],
   exports: [RouterModule]
 })

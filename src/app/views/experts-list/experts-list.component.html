@@ -1,0 +1,61 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>
+      <div class="filter">
+        NOMBRE EXPERTO
+        <span>
+         <input matInput class="inputFilter" (keyup)="applyFilter($event)" placeholder="Buscar por nombre" #input>
+        </span>
+      </div>
+     </mat-header-cell>
+    <mat-cell *matCellDef="let element; let i = index" class="rowTable">{{element.name}}
+    </mat-cell>
+  </ng-container>
+
+  <!-- State Column -->
+  <ng-container matColumnDef="state">
+    <mat-header-cell *matHeaderCellDef>
+      <div class="filter">
+       ESTADO
+       <span>
+        <input matInput class="inputFilter" (keyup)="applyFilter($event)" placeholder="Todos" #input>
+       </span>
+     </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="rowTable"> {{element.state}} </mat-cell>
+  </ng-container>
+
+  <!-- Tags Column -->
+  <ng-container matColumnDef="tags">
+    <mat-header-cell *matHeaderCellDef>
+      <div class="filter">
+      ETIQUETAS
+      <span>
+        <input matInput class="inputFilter" (keyup)="applyFilter($event)" placeholder="Todos" #input>
+       </span>
+     </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="rowTable">
+      {{element.tags }}
+    </mat-cell>
+  </ng-container>
+
+
+  <!-- State Column -->
+  <ng-container matColumnDef="score">
+    <mat-header-cell *matHeaderCellDef>
+      <div class="filter">
+       VALORACIÓN
+       <span>
+        <input matInput class="inputFilter" (keyup)="applyFilter($event)" placeholder="Todos" #input>
+       </span>
+     </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="rowTable"> {{element.score}} </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>

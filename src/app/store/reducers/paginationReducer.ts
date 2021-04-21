@@ -4,7 +4,7 @@ import PaginationState from "../config/paginationState.interface"
 
 const initialState: PaginationState = {
   pages: 0,
-  limit: 5,
+  limit: 10,
   total: 0
 }
 

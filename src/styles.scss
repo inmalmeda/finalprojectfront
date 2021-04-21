@@ -50,3 +50,62 @@ body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif; }
 .spacer{
   flex:1 1 auto;
 }
+
+.ng-star-inserted{
+  width:100%
+}
+
+table{
+  width:100%
+}
+
+.filter{
+  margin-top: 10px;
+  height: 80px;
+  font-size: 14px;
+  font-weight: 500;
+  color:#A3A3B4;
+}
+
+
+.filter span{
+  display: block;
+}
+
+input{
+  height: 40px;
+  margin-top: 10px;
+  font-size: 16px;
+  padding-left: 10px;
+  border:1px solid #E2E3E9;
+  box-sizing: border-box;
+  border-radius: 2px;
+  max-width: none;
+  width: 130%;
+}
+
+.inputFilter{
+  background-color: #F9FAFB;
+}
+
+.mat-row:hover{
+  background-color: #F0F1F5;
+}
+
+.buttonTable{
+  width:auto;
+  background-color: white;
+  color:#797D8A;
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+.buttonTable:hover{
+  background-color: #D66464;
+  color:white;
+}
+
+.rowTable{
+  font-size: 16px;
+}

@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from './components/header/header.component';
 import { LogoSvgComponent } from './components/logo-svg/logo-svg.component';
-import { OnDemand } from './services/load/strategies/on-demand.strategy';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { StoreModule } from '@ngrx/store';
 import { RootReducer } from './store/reducers/rootReducer';
@@ -21,13 +20,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
+import { TagsListComponent } from './views/tags-list/tags-list.component';
+import { TagPageComponent } from './pages/tag/tag-page/tag-page.component';
+import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-page.component';
+import { ExpertsListComponent } from './views/experts-list/experts-list.component';
+import { ExpertPageComponent } from './pages/expert/expert-page/expert-page.component';
+import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/expert-detail-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LogoSvgComponent,
-    NavigationComponent
+    NavigationComponent,
+    TagsListComponent,
+    TagPageComponent,
+    TagDetailPageComponent,
+    ExpertsListComponent,
+    ExpertPageComponent,
+    ExpertDetailPageComponent
   ],
   imports: [
     BrowserModule,
@@ -40,17 +54,19 @@ import { MatSortModule } from '@angular/material/sort';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatFormFieldModule,
     StoreModule.forRoot(RootReducer, {}),
     StoreDevtoolsModule.instrument({
       maxAge:10
     }),
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatPaginatorModule,
     MatSortModule
   ],
-  providers: [
-    OnDemand
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

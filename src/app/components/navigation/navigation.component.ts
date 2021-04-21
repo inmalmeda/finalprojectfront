@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { OnDemandPreloadService } from 'src/app/services/load/on-demand-preload.service';
 import { StoreService } from 'src/app/services/states/store.service';
 import { UtilsService } from 'src/app/services/states/utils.service';
 import TitleHeaderState from 'src/app/store/config/titleHeaderState.interface';
@@ -28,7 +27,6 @@ export class NavigationComponent{
   );
 
   constructor(private breakpointObserver: BreakpointObserver,
-    private preloadService: OnDemandPreloadService,
     private storeUtils: UtilsService,
     private storeService: StoreService) {
   }
@@ -40,7 +38,6 @@ export class NavigationComponent{
   }
 
   loadRoute(routePath: string) {
-    this.preloadService.startPreload(routePath)
     this.titleMain = routePath == 'experts' ? 'Expertos' : 'Etiquetas'
     this.titleSecondary = routePath == 'experts' ? 'CANDIDATOS' : 'ETIQUETAS'
     this.actionTitle = routePath == 'experts' ? 'Nuevo Experto' : 'Añadir etiqueta'
