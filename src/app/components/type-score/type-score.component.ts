@@ -15,7 +15,8 @@ export class TypeScoreComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.text = this.score.toString()
+    if(this.score!=null)
+        this.text = this.score.toString()
   }
 
   getColorTag() {

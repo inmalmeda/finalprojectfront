@@ -22,11 +22,13 @@
         Expertos
       </a>
       <a mat-list-item routerLink='/tags' (click)="loadRoute('tags')"
-      [class] = "(isTag) ? 'buttonActive' : 'buttonNoActive'">
-      <mat-icon>local_offer</mat-icon>
-      Etiquetas
-    </a>
+        [class] = "(isTag) ? 'buttonActive' : 'buttonNoActive'">
+        <mat-icon>local_offer</mat-icon>
+        Etiquetas
+      </a>
     </mat-nav-list>
+    <app-footer-nav></app-footer-nav>
+
 
   </mat-sidenav>
   <mat-sidenav-content>
@@ -35,11 +37,6 @@
        <mat-icon>menu</mat-icon>
       </button>
       <app-header id="titleNavHeader"></app-header>
-      <span class="spacer"></span>
-      <button mat-button id= "buttonNavNew">
-        <mat-icon>add</mat-icon>
-        {{actionTitle}}
-      </button>
     </mat-toolbar>
   <div class="content" role="main">
      <router-outlet>

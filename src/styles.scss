@@ -67,6 +67,15 @@ table{
   color:#A3A3B4;
 }
 
+.filterSelector{
+  margin-top: 10px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color:#A3A3B4;
+  width: 70%;
+}
+
 
 .filter span{
   display: block;
@@ -84,6 +93,15 @@ input{
   width: 120%;
 }
 
+
+.inputFilter:hover
+{
+    border: 2px solid #4ADEBB;
+}
+
+
+
+
 .inputFilter{
   background-color: #F9FAFB;
 }
@@ -92,8 +110,6 @@ input{
 .inputDisabledFilter{
   pointer-events: none;
 }
-
-
 
 
 .mat-row:hover{
@@ -127,3 +143,22 @@ input{
   margin-left:15px;
   margin-right:15px;
 }
+
+
+.mat-form-field-flex{
+  height:40px
+}
+
+.mat-form-field-infix{
+  border:0px;
+
+}
+.mat-form-field-appearance-fill .mat-form-field-flex{
+  padding-top:0px;
+}
+
+
+.mat-simple-snackbar-action{
+  text-align: center;
+}
+

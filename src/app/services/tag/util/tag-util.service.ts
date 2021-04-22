@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FiltersTag } from 'src/app/models/tag/filters/filters-tag.model';
 import { Tag } from 'src/app/models/tag/tag.model';
 import PaginationState from 'src/app/store/config/paginationState.interface';
@@ -18,7 +19,7 @@ export class TagUtilService {
   tags: Tag[] = []
 
   constructor(private storeService: StoreService, private tagService: TagService,
-        private storeUtils: UtilsService, private storeUtilsTags: UtilStateService) { }
+        private storeUtils: UtilsService, private storeUtilsTags: UtilStateService, private _snackBar: MatSnackBar) { }
 
 
   loadStates() {
@@ -44,7 +45,13 @@ export class TagUtilService {
   getAllTags() {
    this.tagService.getAllTags(this.filterTags).subscribe(data => {
       this.storeUtilsTags.changeListTags(data.tags)
-      this.storeUtils.changeTotalResult(data.totalCount)
+     this.storeUtils.changeTotalResult(data.totalCount)
+    },
+    err => {
+      this._snackBar.open("Error al buscar las etiquetas", "", {
+        duration: 3000
+      });
     })
   }
+
 }

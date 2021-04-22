@@ -23,15 +23,12 @@ export class ExpertService {
     if (filters.state != '')
       this.url = this.url + `state=${filters.state}&`
 
-    if (filters.score != '')
-      this.url = this.url + `score=${filters.score}&`
+    this.url = this.url + `score=${filters.score}&`
 
     if (filters.tag != '')
       this.url = this.url + `tag=${filters.tag}&`
 
     this.url = this.url + `page=${filters.page}&limit=${filters.limit}`
-
-    console.log(this.url)
 
     return this.http.get(this.url)
   }

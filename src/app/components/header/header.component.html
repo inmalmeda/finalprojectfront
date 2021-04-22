@@ -1,7 +1,20 @@
-<span class= "titleNavHeader">
- Lista de {{title}}
-</span>
-<span id= "subtitle">
-  {{countElements}} {{subtitle}}
-</span>
-
+<div class="titleNavHeader">
+  <a mat-button (click)="goBack()" *ngIf="!showButton">
+    {{textButtonBack}}
+  </a>
+</div>
+<div>
+  <div class= "titleNavHeader">
+    {{title}}
+   </div>
+   <span id= "subtitle">
+    <span *ngIf="showButton">{{countElements}}</span>  {{subtitle}}
+   </span>
+</div>
+<span class="spacer"></span>
+<div>
+  <button mat-button id= "buttonNavNew" (click)="createRegiter()" *ngIf="showButton">
+    <mat-icon>add</mat-icon>
+    {{textButton}}
+  </button>
+</div>

@@ -1,0 +1,35 @@
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+.selector{
+  height: 40px;
+  font-size: 16px;
+  padding-left: 10px;
+  border:1px solid #E2E3E9;
+  box-sizing: border-box;
+  border-radius: 2px;
+  max-width: none;
+  width: 120%;
+}
+
+.selector:hover
+{
+    border: 2px solid #4ADEBB;
+}
+
+
+.mat-form-field{
+  padding-left: 0px;
+}
+
+.mat-form-field-flex{
+  height: 40px;
+}
+
+.mat-form-field-infix{
+  padding-top: 0px;
+  height: 40px;
+}
+
+

@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill" class="selector">
+  <mat-select atNativeControl (selectionChange)="selectScore($event)">
+    <mat-option></mat-option>
+    <mat-option *ngFor="let option of score" [value]="option.value">
+        <app-type-score [score] = "option.value"></app-type-score>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

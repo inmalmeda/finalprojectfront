@@ -1,0 +1,15 @@
+<form [formGroup] = "tagForm" (submit) = "saveTag()">
+  <div>
+    <div class="titleNew">
+      NOMBRE DE LA ETIQUETA
+        <input matInput formControlName = "name" placeholder="Nombre de la etiqueta"/>
+    </div>
+  <div style="text-align: center;">
+    <div >
+      <button mat-raised-button class= "buttonPrimary" type="submit">
+        {{tag.id ==-1 ? "Crear etiqueta" : "Actualizar etiqueta"}}</button>
+    </div>
+  </div>
+  </div>
+</form>
+

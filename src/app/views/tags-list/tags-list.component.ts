@@ -1,5 +1,8 @@
 import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { FiltersTag } from 'src/app/models/tag/filters/filters-tag.model';
 import { Tag } from 'src/app/models/tag/tag.model';
 import { StoreService } from 'src/app/services/states/store.service';
@@ -24,7 +27,7 @@ export class TagsListComponent implements OnInit, DoCheck {
   @Output() manipulateEventPaginator: EventEmitter<PageEvent> = new EventEmitter<PageEvent>()
 
   constructor(private storeService: StoreService, private storeUtilsTags: UtilStateService,
-              private tagUtilService: TagUtilService) { }
+              private tagUtilService: TagUtilService, public dialog: MatDialog, private router: Router) { }
 
   ngDoCheck(): void {
     this.dataSource = this.tagList;
@@ -54,11 +57,15 @@ export class TagsListComponent implements OnInit, DoCheck {
     this.buttonDelete = true
   }
 
-/*   hideButton() {
-    this.buttonDelete = false
-  } */
+  deleteTag(idTag: number) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '40%',
+      data: this.tagList[idTag]
+    });
 
-  deleteTag(event: Event) {
+    dialogRef.afterClosed().subscribe((result) => {
+      this.tagUtilService.getAllTags();
+    });
 
   }
 }

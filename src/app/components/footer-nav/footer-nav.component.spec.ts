@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExpertDetailPageComponent } from './expert-detail-page.component';
+import { FooterNavComponent } from './footer-nav.component';
 
-describe('ExpertDetailPageComponent', () => {
-  let component: ExpertDetailPageComponent;
-  let fixture: ComponentFixture<ExpertDetailPageComponent>;
+describe('FooterNavComponent', () => {
+  let component: FooterNavComponent;
+  let fixture: ComponentFixture<FooterNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ExpertDetailPageComponent ]
+      declarations: [ FooterNavComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExpertDetailPageComponent);
+    fixture = TestBed.createComponent(FooterNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

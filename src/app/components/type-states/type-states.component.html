@@ -1,4 +1,6 @@
-<div [style.color] = "getColor()">
+<div [style.color] = "text === 'Validado' ? '#4ADEBB' : text === 'Pendiente' ? '#F0CE76' :
+                      text === 'Todos' ? '#D66464': '#D66464'">
+
   <li>
   {{text}}</li>
 </div>

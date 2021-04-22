@@ -17,6 +17,7 @@
   box-shadow: 2px 0px 16px rgba(117, 114, 150, 0.15);
 }
 
+
 .content {
   display: flex;
   margin: 82px auto 32px;
@@ -26,7 +27,6 @@
   align-items: center;
   width:100%;
 }
-
 
 
 #titleNav {
@@ -57,8 +57,9 @@
 #titleNavHeader{
   color:#131340;
   font-weight: 700;
-  display: block;
+  display: flex;
   font-size: 26px;
+  width: 100%;
 }
 
 .mat-toolbar {
@@ -81,13 +82,6 @@
   color: #A3A3B4;
 }
 
-#buttonNavNew{
-  width:auto;
-  background-color: #0ED28C;
-  color:white;
-  font-size: 16px;
-  font-weight: 500;
-}
 
 
 

@@ -44,14 +44,14 @@
       <span>
         <button id={{i}} class="buttonTable" mat-icon-button
         [style]="i == mouseOver ? 'display: block' : 'display: none'"
-        (click) = "deleteTag($event)">
+        (click) = "deleteTag(i)">
           <mat-icon>delete</mat-icon> Borrar etiqueta
         </button>
       </span>
     </mat-cell>
   </ng-container>
 
-
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row;let i = index columns: displayedColumns;" (mouseover)="showButton(i)"></mat-row>
+  <mat-row *matRowDef="let row;let i = index columns: displayedColumns;" class="row" (mouseover)="showButton(i)"
+   routerLink='/tags/{{i}}' [state]="tagList[i]"></mat-row>
 </table>

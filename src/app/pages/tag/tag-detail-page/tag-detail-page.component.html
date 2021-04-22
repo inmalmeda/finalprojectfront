@@ -1,1 +1,4 @@
-<p>tag-detail-page works!</p>
+<div class="container">
+  <div>Detalle de etiqueta</div>
+  <app-tag [tag] = "tag" (manipulateTag) = "updateTag($event)"></app-tag>
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ACTION_CHANGE_LIMIT, ACTION_CHANGE_PAGES, ACTION_CHANGE_SUBTITLEHEADER, ACTION_CHANGE_TEXTBUTTONNEW, ACTION_CHANGE_TITLEHEADER, ACTION_CHANGE_TOTALRESULT } from 'src/app/store/actions/actions.types';
+import { ACTION_CHANGE_LIMIT, ACTION_CHANGE_PAGES, ACTION_CHANGE_SHOWBUTTONNEW, ACTION_CHANGE_SUBTITLEHEADER, ACTION_CHANGE_TEXTBACK, ACTION_CHANGE_TEXTBUTTONNEW, ACTION_CHANGE_TITLEHEADER, ACTION_CHANGE_TOTALRESULT } from 'src/app/store/actions/actions.types';
 import { StoreService } from './store.service';
 
 @Injectable({
@@ -9,10 +9,12 @@ export class UtilsService {
 
   constructor(private storeService: StoreService) { }
 
-  changeHeader(title: string, subtitle: string, action: string) {
+  changeHeader(title: string, subtitle: string, action: string, show:boolean, text:string) {
     this.changeTitleHeader(title)
     this.changeSubTitleHeader(subtitle)
     this.changeActionButton(action)
+    this.changeShowButton(show)
+    this.changeTextBack(text)
   }
 
   changeTotalResult(total: number) {
@@ -48,6 +50,21 @@ export class UtilsService {
       payload: action
     })
   }
+
+  private changeShowButton(show: boolean) {
+    this.storeService.updateState({
+      type: ACTION_CHANGE_SHOWBUTTONNEW,
+      payload: show
+    })
+  }
+
+  private changeTextBack(text: string) {
+    this.storeService.updateState({
+      type: ACTION_CHANGE_TEXTBACK,
+      payload: text
+    })
+  }
+
 
   private changePage(page: number) {
     this.storeService.updateState({
