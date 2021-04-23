@@ -1,0 +1,79 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Datos generales">
+    <div class="contentMax">
+        <span>
+          DISPONIBILIDAD
+        </span>
+          <app-selector-general [data] = "availabilitySelector" (emitte) = "setAvailability($event)" [textPlaceholder]="this.expert.availability"></app-selector-general>
+        <span>
+          ESTADO
+        </span>
+            <app-selector-type-states (emitState) = "setState($event)" [states] = "states" [textPlaceholder]="this.expert.state"></app-selector-type-states>
+        <span>
+          VALORACIÓN
+        </span>
+            <app-selector-type-score (emitScore) = "setScore($event)" [textPlaceholder] = "this.expert.score"></app-selector-type-score>
+        <span>
+          ORIGEN
+        </span>
+            <app-selector-general (emitte) = "setOrigin($event)" [data] = "origin" [textPlaceholder] = "this.expert.origin"></app-selector-general>
+    </div>
+  <form [formGroup] = "expertForm" class="form">
+    <div class="content">
+      <div>
+        CONTACTO
+      </div>
+      <div class="data">
+        <span> <mat-icon>call</mat-icon>
+         Teléfono
+        </span>
+        <input matInput formControlName = "contactPhone" (blur) = "saveDataExpert()" placeholder="Sin especificar"/>
+      </div>
+      <div class="data">
+        <span> <mat-icon>mail</mat-icon>
+         Correo
+        </span>
+        <input matInput formControlName = "contactEmail" (blur) = "saveDataExpert()" placeholder="Sin especificar"/>
+      </div>
+      <div class="data">
+        <span> <mat-icon>home</mat-icon>
+         Dirección
+        </span>
+        <input matInput formControlName = "contactTown" (blur) = "saveDataExpert()" placeholder="Sin especificar"/>
+      </div>
+      <div class="data">
+        <span> <mat-icon>person</mat-icon>
+         Linkedin
+        </span>
+        <input matInput formControlName = "contactLinkedin" (blur) = "saveDataExpert()" placeholder="Sin especificar"/>
+      </div>
+    </div>
+    <div class="content right">
+      <div class="titleNew inputMax">
+        <span>
+          ETIQUETAS
+        </span>
+        <div class = "selector">
+          <app-selector-tag [tags] = "tagsSelector" (emitteTag) = "addTag($event)" (emitteTagDelete) = "deleteTag($event)"
+          [tagsOfExpert] = "expertTags"></app-selector-tag>
+        </div>
+      </div>
+  </div>
+</form>
+</mat-tab>
+  <mat-tab label="Observaciones">
+    <div class="contentMax">
+      <span>
+        OBSERVACIONES
+      </span>
+      <input type="text" (blur) = "setObservations($event)" value={{this.expert.observations}}/>
+
+      <div class="data">
+        <span>
+          MOTIVO DESCARTE
+        </span>
+        <app-selector-general (emitte) = "setStateReason($event)" [data] = "cause" [textPlaceholder] = "this.expert.stateReason"></app-selector-general>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

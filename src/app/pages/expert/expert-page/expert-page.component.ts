@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { FiltersExpert } from 'src/app/models/expert/filters/filters-expert.model';
-import { ExpertUtilService } from 'src/app/services/expert/util/expert-util.service';
+import { ExpertUtilService } from 'src/app/services/expert/manage/expert-util.service';
 import { StoreService } from 'src/app/services/states/store.service';
 import { UtilsService } from 'src/app/services/states/utils.service';
 import PaginationState from 'src/app/store/config/paginationState.interface';
@@ -15,7 +15,7 @@ export class ExpertPageComponent implements OnInit {
 
   totalExperts: number = 0
   filterExperts: FiltersExpert = new FiltersExpert('','','','', 0, 0)
-  pageSizeOptions: number[] = [10, 15, 20, 50];
+  pageSizeOptions: number[] = [5,10, 15, 20, 50];
   lowValue: number = 0;
   limit: number = 5;
 
@@ -24,10 +24,11 @@ export class ExpertPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.expertUtilService.loadStates()
+    this.storeUtils.changePagination(this.lowValue, this.limit)
 
     this.storeService.getState('paginationState').subscribe((state: PaginationState) => {
-      this.filterExperts.page = state.pages
-      this.filterExperts.limit = state.limit
+    /*   this.filterExperts.page = state.pages
+      this.filterExperts.limit = state.limit */
       this.totalExperts = state.total
     })
     this.expertUtilService.getAllExperts()

@@ -1,0 +1,62 @@
+<form [formGroup] = "expertForm" (submit) = "saveExpert()">
+  <div>
+    <div class="titleNew inputMed">
+      <span>
+        NOMBRE COMPLETO *
+      </span>
+        <input matInput formControlName = "name" placeholder="Ej: Juan Pérez Martinez"/>
+    </div>
+    <div class="titleNew inputMed">
+      <span>
+        NIF
+      </span>
+        <input matInput formControlName = "nif" placeholder="Ej: 12345678A"/>
+    </div>
+    <div class="titleNew inputMax">
+      <span>
+        ETIQUETAS
+      </span>
+      <div class = "selector">
+        <app-selector-tag [tags] = "tagsSelector" (emitteTag) = "addTag($event)" (emitteTagDelete) = "deleteTag($event)"></app-selector-tag>
+      </div>
+    </div>
+    <div class="titleNew inputMax">
+      <span>
+        DISPONIBILIDAD
+      </span>
+      <div class = "selector">
+        <app-selector-general [data] = "availabilitySelector" (emitte) = "setAvailability($event)" ></app-selector-general>
+      </div>
+    </div>
+    <div class="titleNew inputMed">
+      <span>
+        TELÉFONO *
+      </span>
+        <input matInput formControlName = "contactPhone" placeholder="Ej: +34 622 00 00 00"/>
+    </div>
+    <div class="titleNew inputMed">
+      <span>
+        EMAIL
+      </span>
+        <input matInput formControlName = "contactEmail" placeholder="Ej: juanperez@hotmail.com"/>
+    </div>
+    <div class="titleNew inputMax">
+      <span>
+        DIRECCIÓN
+      </span>
+        <input matInput formControlName = "contactTown" placeholder="Ej:Avenida de Color, Valencia, Valencia"/>
+    </div>
+    <div class="titleNew inputMax">
+      <span>
+        LINKEDIN
+      </span>
+      <input matInput formControlName = "contactLinkedin" placeholder="Introduce el enlace al perfil de Linkedin del experto"/>
+    </div>
+  <div style="text-align: center;">
+    <div >
+      <button mat-raised-button class= "buttonPrimary" type="submit">
+        Crear nuevo experto</button>
+    </div>
+  </div>
+  </div>
+</form>

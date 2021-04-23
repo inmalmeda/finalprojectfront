@@ -1,6 +1,5 @@
 <mat-form-field appearance="fill" class="selector">
-  <mat-select matNativeControl (selectionChange)="selectState($event)">
-    <mat-option></mat-option>
+  <mat-select matNativeControl (selectionChange)="selectState($event)" placeholder={{textPlaceholder}}>
     <mat-option  *ngFor="let option of states" [value]="option.value">
             <app-type-states [text] = "option.viewValue"></app-type-states>
     </mat-option>

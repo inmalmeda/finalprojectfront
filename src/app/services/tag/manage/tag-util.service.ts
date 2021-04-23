@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FiltersTag } from 'src/app/models/tag/filters/filters-tag.model';
 import { Tag } from 'src/app/models/tag/tag.model';
 import PaginationState from 'src/app/store/config/paginationState.interface';
 import TagsState from 'src/app/store/config/tagsState.interface';
+import { SnackBarService } from '../../component/snack-bar/snack-bar.service';
 import { StoreService } from '../../states/store.service';
 import { UtilsService } from '../../states/utils.service';
 import { UtilStateService } from '../state/util-state.service';
@@ -17,9 +17,10 @@ export class TagUtilService {
   filterTags: FiltersTag = new FiltersTag('', 0, 0)
   totalTags: number = 0
   tags: Tag[] = []
+  correctTransaction = false
 
   constructor(private storeService: StoreService, private tagService: TagService,
-        private storeUtils: UtilsService, private storeUtilsTags: UtilStateService, private _snackBar: MatSnackBar) { }
+        private storeUtils: UtilsService, private storeUtilsTags: UtilStateService,private snackBar: SnackBarService) { }
 
 
   loadStates() {
@@ -37,8 +38,8 @@ export class TagUtilService {
 
   loadStateTag(){
     this.storeService.getState('tagsState').subscribe((state: TagsState) => {
-        this.tags = state.tags
-        this.filterTags.name = state.filterName
+      this.tags = state.tags
+      this.filterTags.name = state.filterName
     })
   }
 
@@ -47,10 +48,8 @@ export class TagUtilService {
       this.storeUtilsTags.changeListTags(data.tags)
      this.storeUtils.changeTotalResult(data.totalCount)
     },
-    err => {
-      this._snackBar.open("Error al buscar las etiquetas", "", {
-        duration: 3000
-      });
+     err => {
+      this.snackBar.showSnack("Error al buscar las etiquetas")
     })
   }
 

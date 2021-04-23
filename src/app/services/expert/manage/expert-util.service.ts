@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Expert } from 'src/app/models/expert/expert.model';
 import { FiltersExpert } from 'src/app/models/expert/filters/filters-expert.model';
 import ExpertsState from 'src/app/store/config/expertsState.interface';
 import PaginationState from 'src/app/store/config/paginationState.interface';
+import { SnackBarService } from '../../component/snack-bar/snack-bar.service';
 import { StoreService } from '../../states/store.service';
 import { UtilsService } from '../../states/utils.service';
 import { ExpertService } from '../expert.service';
@@ -20,7 +20,7 @@ export class ExpertUtilService {
 
   constructor(private storeService: StoreService,
     private expertService: ExpertService, private storeUtils: UtilsService, private storeUtilsExperts: UtilStateService,
-    private _snackBar: MatSnackBar) { }
+    private snackBar: SnackBarService) { }
 
 
     loadStates() {
@@ -50,10 +50,10 @@ export class ExpertUtilService {
     this.expertService.getAllExperts(this.filterExperts).subscribe(data => {
        this.storeUtilsExperts.changeListExperts(data.experts)
        this.storeUtils.changeTotalResult(data.totalCount)
-     },  err => {
-      this._snackBar.open("Error al buscar los expertos", "", {
-        duration: 3000
-      });
+    }, err => {
+      this.snackBar.showSnack("Error al buscar los expertos")
     })
-   }
+  }
+
+  
 }

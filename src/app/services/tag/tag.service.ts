@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { FiltersTag } from 'src/app/models/tag/filters/filters-tag.model';
 import { Tag } from 'src/app/models/tag/tag.model';
 
@@ -21,9 +22,13 @@ export class TagService {
     if (filters.name != '')
       this.url = this.url + `name=${filters.name}&`
 
+    this.url = this.url + `page=${filters.page}`
 
-    this.url = this.url +  `page=${filters.page}&limit=${filters.limit}`
+    if (filters.limit != -1)
+      this.url = this.url + `&limit=${filters.limit}`
 
+   // this.url = this.url +  `page=${filters.page}&limit=${filters.limit}`
+    
     return this.http.get(this.url)
   }
 

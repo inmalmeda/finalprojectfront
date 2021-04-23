@@ -100,12 +100,9 @@ input{
 }
 
 
-
-
 .inputFilter{
   background-color: #F9FAFB;
 }
-
 
 .inputDisabledFilter{
   pointer-events: none;
@@ -144,7 +141,6 @@ input{
   margin-right:15px;
 }
 
-
 .mat-form-field-flex{
   height:40px
 }
@@ -155,10 +151,21 @@ input{
 }
 .mat-form-field-appearance-fill .mat-form-field-flex{
   padding-top:0px;
+  background-color: white;
+  border:1px solid #E2E3E9;
 }
+
+.mat-form-field-appearance-fill .mat-form-field-flex:hover{
+  border: 2px solid #4ADEBB;
+}
+
 
 
 .mat-simple-snackbar-action{
   text-align: center;
 }
 
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  background-color: #4ADEBB;
+}

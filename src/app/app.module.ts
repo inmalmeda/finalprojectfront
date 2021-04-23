@@ -25,7 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { TagsListComponent } from './views/tags-list/tags-list.component';
 import { TagPageComponent } from './pages/tag/tag-page/tag-page.component';
@@ -43,6 +44,14 @@ import { TagNewPageComponent } from './pages/tag/tag-new-page/tag-new-page.compo
 import { ExpertNewPageComponent } from './pages/expert/expert-new-page/expert-new-page.component';
 import { TagComponent } from './components/forms/tag/tag.component';
 import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-page.component';
+import { ExpertComponent } from './components/forms/expert/expert/expert.component';
+import { AutocompleteTagComponent } from './components/autocomplete-tag/autocomplete-tag.component';
+import { SelectorGeneralComponent } from './components/selector-general/selector-general.component';
+import { DialogFormComponent } from './components/forms/tag/dialog-form/dialog-form.component';
+import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/expert-detail-page.component';
+import { DetailComponent } from './components/forms/expert/detail/detail.component';
+import { DetailHeaderComponent } from './components/forms/expert/detail-header/detail-header.component';
+import { ImageExpertComponent } from './components/logo-svg/image-expert/image-expert.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +74,15 @@ import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-p
     TagNewPageComponent,
     ExpertNewPageComponent,
     TagComponent,
-    TagDetailPageComponent
+    TagDetailPageComponent,
+    ExpertComponent,
+    AutocompleteTagComponent,
+    SelectorGeneralComponent,
+    DialogFormComponent,
+    ExpertDetailPageComponent,
+    DetailComponent,
+    DetailHeaderComponent,
+    ImageExpertComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +102,7 @@ import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-p
     MatAutocompleteModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatTabsModule,
     StoreModule.forRoot(RootReducer, {}),
     StoreDevtoolsModule.instrument({
       maxAge:10

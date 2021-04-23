@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UtilStateService } from 'src/app/services/expert/state/util-state.service';
-import { ExpertUtilService } from 'src/app/services/expert/util/expert-util.service';
+import { ExpertUtilService } from 'src/app/services/expert/manage/expert-util.service';
 
 @Component({
   selector: 'app-selector-type-score',
@@ -18,7 +18,9 @@ export class SelectorTypeScoreComponent implements OnInit {
     { value: 100, viewValue: '100' },
   ];
 
-  selectedScore = this.score[0].value;
+  @Output() emitScore: EventEmitter<string> = new EventEmitter<string>()
+
+  @Input() textPlaceholder: string = ''
 
   constructor(private storeUtilsExperts: UtilStateService, private expertUtilService : ExpertUtilService) { }
 
@@ -26,14 +28,17 @@ export class SelectorTypeScoreComponent implements OnInit {
   }
 
   selectScore(event: any) {
-
-
     if (event.value == undefined) {
+      this.emitScore.emit('')
+    } else {
+      this.emitScore.emit(event.value)
+    }
+   /*  if (event.value == undefined) {
       this.storeUtilsExperts.changeFilterScore('');
     } else {
       this.storeUtilsExperts.changeFilterScore(event.value);
     }
-    this.expertUtilService.getAllExperts();
-   }
+    this.expertUtilService.getAllExperts(); */
+  }
 
 }

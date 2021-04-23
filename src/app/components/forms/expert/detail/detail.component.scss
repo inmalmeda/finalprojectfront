@@ -1,0 +1,48 @@
+.form{
+  display:flex
+}
+
+.contentMax{
+  width:100%;
+  margin-top:15px;
+}
+
+.content{
+  margin-left:30px;
+  width:50%;
+  margin-top:15px;
+}
+
+.content div{
+  color: #A3A3B4;
+}
+
+
+.data{
+  margin-top:10px;
+  margin-bottom:20px;
+  font-size: 16px;
+}
+
+.data span{
+  width:30px;
+}
+
+input{
+  margin-left:30px;
+  border:white;
+  width: 50%;
+  color: #A3A3B4;
+  font-size: 16px;
+  padding-top:15px;
+}
+
+input:hover
+{
+    border: 2px solid #4ADEBB;
+}
+
+.inputMed{
+  width: 50%;
+  display: inline-block;
+}

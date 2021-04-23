@@ -19,12 +19,12 @@
       <div class="filterSelector">
        ESTADO
        <span>
-         <app-selector-type-states></app-selector-type-states>
+         <app-selector-type-states (emitState) = "setState($event)" [states] = "states"></app-selector-type-states>
        </span>
      </div>
     </mat-header-cell>
     <mat-cell *matCellDef="let element" class="rowTable">
-      <app-type-states [text] = 'element.state'></app-type-states>
+      <app-type-states [text] = 'element.state' ></app-type-states>
       </mat-cell>
   </ng-container>
 
@@ -33,11 +33,11 @@
     <mat-header-cell *matHeaderCellDef>
       <div class="filter">
       ETIQUETAS
-        <app-selector-tag></app-selector-tag>
+        <app-autocomplete-tag></app-autocomplete-tag>
      </div>
     </mat-header-cell>
     <mat-cell *matCellDef="let element" class="rowTable">
-      <app-type-tag *ngFor="let tag of element.tags" [tag]="tag"></app-type-tag>
+      <div class="tag" *ngFor="let tag of element.tags"><span>{{tag.name}}</span></div>
     </mat-cell>
   </ng-container>
 
@@ -48,7 +48,7 @@
       <div class="filterSelector">
        VALORACIÓN
        <span>
-        <app-selector-type-score></app-selector-type-score>
+        <app-selector-type-score (emitScore) = "setScore($event)"></app-selector-type-score>
        </span>
      </div>
     </mat-header-cell>
@@ -59,5 +59,6 @@
 
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-row *matRowDef="let row;let i = index  columns: displayedColumns;" class="row"
+     routerLink='/experts/{{i}}' [state]="expertList[i]"></mat-row>
 </table>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {  RouterModule, Routes } from '@angular/router';
+import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/expert-detail-page.component';
 import { ExpertNewPageComponent } from './pages/expert/expert-new-page/expert-new-page.component';
 import { ExpertPageComponent } from './pages/expert/expert-page/expert-page.component';
 import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-page.component';
@@ -16,10 +17,10 @@ const routes: Routes = [
     path: 'experts',
     component: ExpertPageComponent
   },
- /*  {
+  {
     path: 'experts/:id',
     component: ExpertDetailPageComponent
-  }, */
+  },
   {
     path: 'experts/new/expert',
     component: ExpertNewPageComponent

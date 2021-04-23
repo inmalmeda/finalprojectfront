@@ -1,6 +1,5 @@
-input{
-  width: 80%;
-  background-color: #F9FAFB;
+::ng-deep .mat-form-field-underline {
+  display: none;
 }
 
 input:hover
@@ -8,3 +7,11 @@ input:hover
     border: 2px solid #4ADEBB;
 }
 
+.mat-form-field{
+  display:inline;
+  background-color: #4ADEBB;
+}
+
+.newTag{
+  color: #4ADEBB;
+}

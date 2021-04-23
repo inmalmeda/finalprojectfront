@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tag } from 'src/app/models/tag/tag.model';
 
 @Component({
@@ -10,12 +10,16 @@ export class TypeTagComponent implements OnInit {
 
 
   @Input()
-  tag: Tag = new Tag(0,'','',new Date(), new Date())
+  tag: string = ''
+
+  @Output() emitteTagDelete: EventEmitter<string> = new EventEmitter<string>()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-
+  deleteTag(event: string) {
+    this.emitteTagDelete.emit(event)
+  }
 }

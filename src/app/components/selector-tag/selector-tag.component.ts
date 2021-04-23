@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl,  } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
-import { FiltersTag } from 'src/app/models/tag/filters/filters-tag.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Tag } from 'src/app/models/tag/tag.model';
-import { UtilStateService } from 'src/app/services/expert/state/util-state.service';
-import { ExpertUtilService } from 'src/app/services/expert/util/expert-util.service';
-import { TagService } from 'src/app/services/tag/tag.service';
+import { StoreService } from 'src/app/services/states/store.service';
+import TagsState from 'src/app/store/config/tagsState.interface';
+import { DialogFormComponent } from '../forms/tag/dialog-form/dialog-form.component';
 
 @Component({
   selector: 'app-selector-tag',
@@ -13,66 +11,60 @@ import { TagService } from 'src/app/services/tag/tag.service';
   styleUrls: ['./selector-tag.component.scss']
 })
 export class SelectorTagComponent implements OnInit{
-  myControl = new FormControl();
-  optionsTag: string[] = [];
-  options: Tag[] = [];
-  filteredOptions: any;
-  valueFilter: string = ''
 
-  constructor(private tagService: TagService, private storeUtilsExperts: UtilStateService,
-                private expertUtilService: ExpertUtilService) { }
+  @Input()
+  tags: [{ value: number, viewValue: string }] = [{ value: -1, viewValue: '' }]
+
+  @Input()
+  tagsOfExpert: Tag[] = []
+
+  selectedTags: string[] = []
+
+  @Output() emitteTag: EventEmitter<number> = new EventEmitter<number>()
+
+  @Output() emitteTagDelete: EventEmitter<number> = new EventEmitter<number>()
+
+  constructor(public dialog: MatDialog, private storeService: StoreService) { }
 
   ngOnInit() {
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return  this.optionsTag.filter(option => option.toLowerCase().indexOf(filterValue) === 0)
-  }
-
-
-  changeFilter(event: Event) {
-    this.optionsTag.splice(0, this.optionsTag.length);
-
-    this.valueFilter = (event.target as HTMLInputElement).value
-
-    if (this.valueFilter != '') {
-      this.tagService.getAllTags(new FiltersTag(this.valueFilter,0,4)).subscribe(data => {
-        this.options = data.tags
-      })
-    }
-
-    for (let index = 0; index < this.options.length; index++) {
-      this.optionsTag.push(this.options[index].name)
+    if (this.tagsOfExpert.length > 0) {
+      for (let i= 0; i < this.tagsOfExpert.length; i++) {
+        this.selectedTags.push(this.tagsOfExpert[i].name)
+      }
     }
   }
 
   selectTag(event: any) {
-    console.log(event)
-    let tagSearch = this.options[this.optionsTag.indexOf(event)]
 
-    if (event == '') {
-      this.storeUtilsExperts.changeFilterTag('');
-    } else {
-      if(tagSearch != undefined)
-        this.storeUtilsExperts.changeFilterTag(tagSearch.id.toString())
+    if (event.value != undefined && event.value != -1) {
+
+      let filter = this.tags.filter((tag) => tag.value == event.value)[0].viewValue
+
+      if (this.selectedTags.indexOf(filter) < 0) {
+        this.selectedTags.push(filter)
+        this.emitteTag.emit(event.value)
+      }
+    } else if (event.value == -1) {
+      this.addTag()
     }
-    this.expertUtilService.getAllExperts();
   }
 
-  selectTagIntro(event: any) {
-    let tagSearch = (event.target as HTMLInputElement).value
+  deleteTag(event: any) {
+    let indexDelete = this.selectedTags.indexOf(this.tags.filter((tag) => tag.viewValue == event)[0].viewValue)
+    console.log(indexDelete,"dele")
+    this.selectedTags.splice(indexDelete, 1)
 
-    let finded = this.options.filter(x => x.name == tagSearch)[0];
+    this.emitteTagDelete.emit(this.tags.filter((tag) => tag.viewValue == event)[0].value)
+  }
 
-    if (finded) {
-      this.storeUtilsExperts.changeFilterTag(finded.id.toString())
-    }
-    this.expertUtilService.getAllExperts();
+  addTag() {
+    const dialogRef = this.dialog.open(DialogFormComponent, {
+      width: '40%'
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.emitteTag.emit(-1)
+    });
   }
 }
 

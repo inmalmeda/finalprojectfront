@@ -1,12 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TypeStates } from 'src/app/models/type-states-enum';
 
-/* enum TypeStates {
-  'Validado',
-  'Pendiente',
-  'Todos'
-}
- */
+
 @Component({
   selector: 'app-type-states',
   templateUrl: './type-states.component.html',

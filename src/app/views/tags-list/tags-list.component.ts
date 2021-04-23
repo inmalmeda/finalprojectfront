@@ -7,7 +7,7 @@ import { FiltersTag } from 'src/app/models/tag/filters/filters-tag.model';
 import { Tag } from 'src/app/models/tag/tag.model';
 import { StoreService } from 'src/app/services/states/store.service';
 import { UtilStateService } from 'src/app/services/tag/state/util-state.service';
-import { TagUtilService } from 'src/app/services/tag/util/tag-util.service';
+import { TagUtilService } from 'src/app/services/tag/manage/tag-util.service';
 import TagsState from 'src/app/store/config/tagsState.interface';
 
 @Component({
@@ -39,7 +39,7 @@ export class TagsListComponent implements OnInit, DoCheck {
 
     this.storeService.getState('tagsState').subscribe((state: TagsState) => {
       this.tagList = state.tags
-      this.filterTags.name = state.filterName
+     // this.filterTags.name = state.filterName
     })
   }
 
@@ -53,7 +53,7 @@ export class TagsListComponent implements OnInit, DoCheck {
   }
 
   showButton(event: number) {
-     this.mouseOver = event
+    this.mouseOver = event
     this.buttonDelete = true
   }
 
@@ -66,6 +66,5 @@ export class TagsListComponent implements OnInit, DoCheck {
     dialogRef.afterClosed().subscribe((result) => {
       this.tagUtilService.getAllTags();
     });
-
   }
 }

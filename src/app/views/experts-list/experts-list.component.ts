@@ -3,9 +3,10 @@ import { PageEvent } from '@angular/material/paginator';
 import { Expert } from 'src/app/models/expert/expert.model';
 import { FiltersExpert } from 'src/app/models/expert/filters/filters-expert.model';
 import { UtilStateService } from 'src/app/services/expert/state/util-state.service';
-import { ExpertUtilService } from 'src/app/services/expert/util/expert-util.service';
+import { ExpertUtilService } from 'src/app/services/expert/manage/expert-util.service';
 import { StoreService } from 'src/app/services/states/store.service';
 import ExpertsState from 'src/app/store/config/expertsState.interface';
+import { TypeStates } from 'src/app/models/type-states-enum';
 
 @Component({
   selector: 'app-experts-list',
@@ -18,6 +19,12 @@ export class ExpertsListComponent implements OnInit , DoCheck{
   filterExperts: FiltersExpert = new FiltersExpert('', '','','',0, 0)
   displayedColumns: string[] = ['name', 'state', 'tags','score'];
   dataSource: any
+
+  states = [
+    {value: TypeStates[TypeStates['Validado']], viewValue: 'Validado'},
+    {value: TypeStates[TypeStates['Pendiente']], viewValue: 'Pendiente'},
+    {value: TypeStates[TypeStates['Todos']], viewValue: 'Todos'}
+  ];
 
   @Output() manipulateEventPaginator: EventEmitter<PageEvent> = new EventEmitter<PageEvent>()
 
@@ -47,5 +54,15 @@ export class ExpertsListComponent implements OnInit , DoCheck{
   applyFilter(event: Event) {
     this.storeUtilsExperts.changeFilterName((event.target as HTMLInputElement).value)
     this.expertUtilService.getAllExperts()
+  }
+
+  setState(event: string) {
+      this.storeUtilsExperts.changeFilterState(event);
+      this.expertUtilService.getAllExperts();
+  }
+
+  setScore(event: string) {
+    this.storeUtilsExperts.changeFilterScore(event);
+    this.expertUtilService.getAllExperts();
   }
 }

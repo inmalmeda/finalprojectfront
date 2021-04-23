@@ -1,0 +1,51 @@
+.form{
+  display:flex
+}
+
+.content{
+  margin-left:30px;
+  width:50%;
+  margin-top:15px;
+}
+
+.content div{
+  color: #A3A3B4;
+}
+
+.inputPrin{
+  color: #131340;
+  padding-left:0px;
+}
+
+.right{
+  text-align: right;
+}
+
+.titleDate{
+  font-size: 14px;
+  color:#C7C8CD;
+  margin:30px;
+}
+
+.titleDate span{
+  font-size: 16px;
+  color: #797D8A;
+  display: block;
+
+}
+
+input{
+  border:white;
+  width: 50%;
+  color: #A3A3B4;
+  font-weight: 600;
+  font-size:21px;
+  margin-top:0px;
+}
+
+
+input:hover
+{
+    border: 2px solid #4ADEBB;
+}
+

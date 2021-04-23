@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Tag } from 'src/app/models/tag/tag.model';
+import { SnackBarService } from 'src/app/services/component/snack-bar/snack-bar.service';
 import { StoreService } from 'src/app/services/states/store.service';
 import UserState from 'src/app/store/config/userState.interface';
 
@@ -18,7 +18,7 @@ export class TagComponent implements OnInit {
   @Input() tag: Tag = new Tag(-1, '', '',  new Date(), new Date())
   @Output() manipulateTag: EventEmitter<Tag> = new EventEmitter<Tag>()
 
-  constructor(private formBuilder: FormBuilder, private storeService: StoreService, private _snackBar: MatSnackBar) { }
+  constructor(private formBuilder: FormBuilder, private storeService: StoreService, private snackBar: SnackBarService) { }
 
   ngOnInit(): void {
     this.tagForm = this.formBuilder.group({
@@ -35,10 +35,7 @@ export class TagComponent implements OnInit {
     if (this.tagForm.valid) {
       this.manipulateTag.emit(new Tag(this.tagForm.value.id, this.tagForm.value.name, this.creator,new Date(), new Date()))
     } else {
-      this._snackBar.open("Los datos son inválidos","", {
-        duration: 3000
-      });
+      this.snackBar.showSnack("Los datos son inválidos")
     }
   }
-
 }

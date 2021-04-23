@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goBack() {
-    if (this.title == 'Nuevo Experto') {
+    if (this.title == 'Nuevo experto') {
       this.storeUtils.changeHeader('Lista de Expertos', 'CANDIDATOS', 'Nuevo Experto', true,'')
       this.loadHeader()
       this.router.navigate(['/experts'])

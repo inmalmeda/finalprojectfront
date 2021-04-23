@@ -20,7 +20,7 @@ export function tagsReducer(state = initialState, action: Action) {
     case ACTION_CHANGE_TAGSELECTED:
       return {
         ...state,
-        tag: action.payload
+        tagSelected: action.payload
       }
       case ACTION_CHANGE_TAG_FILTERNAME:
         return {

@@ -1,0 +1,20 @@
+<form [formGroup] = "expertForm" class="form">
+      <app-image-expert></app-image-expert>
+    <div class="content">
+        <input matInput formControlName = "name" class="inputPrin" (blur) = "saveNameExpert()"/>
+      <div>
+        <span>
+          NIF:
+        </span>
+        <input matInput formControlName = "nif" (blur) = "saveNameExpert()"/>
+      </div>
+    </div>
+    <div class="content right">
+      <div class="titleDate">
+        CREADO <span>{{expert.created_at | date: "dd MMM yyyy"}}</span>
+      </div>
+      <div class="titleDate">
+        ÚLTIMO CAMBIO  <span>{{expert.updated_at | date: "dd MMM yyyy"}}</span>
+    </div>
+  </div>
+</form>

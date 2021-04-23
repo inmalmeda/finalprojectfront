@@ -9,7 +9,7 @@
         </span>
       </div>
      </mat-header-cell>
-    <mat-cell *matCellDef="let element" class="rowTable">
+    <mat-cell *matCellDef="let element;let i = index" class="rowTable row" routerLink='/tags/{{i}}' [state]="tagList[i]">
         {{element.name}}
     </mat-cell>
   </ng-container>
@@ -52,6 +52,5 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row;let i = index columns: displayedColumns;" class="row" (mouseover)="showButton(i)"
-   routerLink='/tags/{{i}}' [state]="tagList[i]"></mat-row>
+  <mat-row *matRowDef="let row;let i = index columns: displayedColumns;" (mouseover)="showButton(i)"></mat-row>
 </table>
