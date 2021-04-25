@@ -21,7 +21,8 @@ const routes: Routes = [
   },
   {
     path: 'experts',
-    component: ExpertPageComponent
+    component: ExpertPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'experts/:id',
