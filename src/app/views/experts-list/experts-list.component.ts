@@ -7,6 +7,7 @@ import { ExpertUtilService } from 'src/app/services/expert/manage/expert-util.se
 import { StoreService } from 'src/app/services/states/store.service';
 import ExpertsState from 'src/app/store/config/expertsState.interface';
 import { TypeStates } from 'src/app/models/type-states-enum';
+import { UtilsService } from 'src/app/services/states/utils.service';
 
 @Component({
   selector: 'app-experts-list',
@@ -27,9 +28,10 @@ export class ExpertsListComponent implements OnInit , DoCheck{
   ];
 
   @Output() manipulateEventPaginator: EventEmitter<PageEvent> = new EventEmitter<PageEvent>()
+  @Output() emitFilters: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   constructor(private storeService: StoreService, private storeUtilsExperts: UtilStateService,
-    private expertUtilService: ExpertUtilService) { }
+    private expertUtilService: ExpertUtilService, private storeUtils: UtilsService) { }
 
   ngDoCheck(): void {
     this.dataSource = this.expertList;
@@ -47,22 +49,38 @@ export class ExpertsListComponent implements OnInit , DoCheck{
     })
   }
 
+  /**
+   * Emit the pagination
+   * @param event
+   */
   getPaginatorData(event: PageEvent) :void{
     this.manipulateEventPaginator.emit(event)
   }
 
+  /**
+   * Emit the change of name filter
+   * @param event
+   */
   applyFilter(event: Event) {
     this.storeUtilsExperts.changeFilterName((event.target as HTMLInputElement).value)
-    this.expertUtilService.getAllExperts()
+    this.emitFilters.emit(true);
   }
 
+  /**
+   * Emit the change of state filter
+   * @param event
+   */
   setState(event: string) {
-      this.storeUtilsExperts.changeFilterState(event);
-      this.expertUtilService.getAllExperts();
+    this.storeUtilsExperts.changeFilterState(event);
+    this.emitFilters.emit(true);
   }
 
+  /**
+   * Emit the change of score filter
+   * @param event
+   */
   setScore(event: string) {
     this.storeUtilsExperts.changeFilterScore(event);
-    this.expertUtilService.getAllExperts();
+    this.emitFilters.emit(true);
   }
 }

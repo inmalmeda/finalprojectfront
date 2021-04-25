@@ -35,8 +35,10 @@ export class AutocompleteTagComponent implements OnInit {
     return this.optionsTag.filter(option => option.toLowerCase().indexOf(filterValue) === 0)
   }
 
-
-
+  /**
+   * Find similar tags that user is looking for
+   * @param event
+   */
   changeFilter(event: Event) {
 
     this.optionsTag.splice(0, this.optionsTag.length);
@@ -54,6 +56,10 @@ export class AutocompleteTagComponent implements OnInit {
     }
   }
 
+  /**
+   * Select a tag like a filter when user choose an option
+   * @param event
+   */
   selectTag(event: any) {
     let tagSearch = this.options[this.optionsTag.indexOf(event)]
 
@@ -66,6 +72,10 @@ export class AutocompleteTagComponent implements OnInit {
     this.expertUtilService.getAllExperts();
   }
 
+  /**
+   * Select a tag when user click enter
+   * @param event
+   */
   selectTagIntro(event: any) {
     let tagSearch = (event.target as HTMLInputElement).value
 
@@ -74,6 +84,16 @@ export class AutocompleteTagComponent implements OnInit {
     if (finded) {
       this.storeUtilsExperts.changeFilterTag(finded.id.toString())
     }
+    this.expertUtilService.getAllExperts();
+  }
+
+  /**
+   * Unselect the tag when input lose focus and is empty
+   * @param event
+   */
+  selectNotTag(event: any) {
+    if ((event.target as HTMLInputElement).value == '')
+    this.storeUtilsExperts.changeFilterTag('')
     this.expertUtilService.getAllExperts();
   }
 }

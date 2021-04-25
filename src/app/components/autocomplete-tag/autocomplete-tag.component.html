@@ -1,5 +1,5 @@
 <input type="text" placeholder="Buscar por nombre" matInput [formControl]="myControl" [matAutocomplete]="auto"
-  (input)="changeFilter($event)" (keydown.enter)="selectTagIntro($event)">
+  (input)="changeFilter($event)" (keydown.enter)="selectTagIntro($event)" (blur)="selectNotTag($event)">
 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" >
     <mat-option *ngFor="let optionsTag of filteredOptions | async" [value]="optionsTag" (click)="selectTag(optionsTag)" >
       {{optionsTag}}

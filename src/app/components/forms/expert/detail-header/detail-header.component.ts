@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, Validators,FormGroupDirective, NgForm, FormGroup, FormBuilder, } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { Expert } from 'src/app/models/expert/expert.model';
+import {  Validators, FormGroup, FormBuilder, } from '@angular/forms';
 import { SnackBarService } from 'src/app/services/component/snack-bar/snack-bar.service';
 
 
@@ -31,6 +29,9 @@ export class DetailHeaderComponent implements OnInit {
     })
   }
 
+  /**
+   * Emit new data about expert
+   */
   saveNameExpert(): void{
     if (this.expertForm.value.name != this.expert.name || this.expertForm.value.nif != this.expert.nif) {
       if (this.expertForm.valid) {

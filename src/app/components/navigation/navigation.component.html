@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" *ngIf="logged">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -28,8 +28,6 @@
       </a>
     </mat-nav-list>
     <app-footer-nav></app-footer-nav>
-
-
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar  id="titleNavMain">
@@ -44,3 +42,6 @@
   </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+
+<app-login-page *ngIf="!logged" (emitLog) = "changeLooged()"></app-login-page>

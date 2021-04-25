@@ -1,0 +1,27 @@
+input{
+  width: 95%;
+  margin-top:10px;
+}
+input:hover
+{
+    border: 2px solid #4ADEBB;
+}
+
+button{
+  width:30%;
+  margin-top: 30px;
+  background-color: #0ED28C;
+  color:white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.titleNew{
+  color:#A3A3B4;
+  font-size: 14px;
+  margin-top:25px;
+}
+
+.titleNew span{
+  display: block;
+}

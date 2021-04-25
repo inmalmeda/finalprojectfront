@@ -31,6 +31,9 @@ export class TagComponent implements OnInit {
     })
   }
 
+  /**
+   * Emit the new tag
+   */
   saveTag(): void{
     if (this.tagForm.valid) {
       this.manipulateTag.emit(new Tag(this.tagForm.value.id, this.tagForm.value.name, this.creator,new Date(), new Date()))

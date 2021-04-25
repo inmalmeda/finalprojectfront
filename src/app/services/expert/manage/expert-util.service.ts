@@ -18,16 +18,20 @@ export class ExpertUtilService {
   totalExperts: number = 0
   experts: Expert[] = []
 
-  constructor(private storeService: StoreService,
-    private expertService: ExpertService, private storeUtils: UtilsService, private storeUtilsExperts: UtilStateService,
-    private snackBar: SnackBarService) { }
+  constructor(private storeService: StoreService, private expertService: ExpertService, private storeUtils: UtilsService,
+    private storeUtilsExperts: UtilStateService, private snackBar: SnackBarService) { }
 
+  /**
+   * Load states of expert data of REDUX
+   */
+  loadStates() {
+    this.loadStatePagination()
+    this.loadStateExpert()
+  }
 
-    loadStates() {
-      this.loadStatePagination()
-      this.loadStateExpert()
-    }
-
+  /**
+   * Load state of pagination of REDUX
+   */
   loadStatePagination(){
     this.storeService.getState('paginationState').subscribe((state: PaginationState) => {
       this.filterExperts.page = state.pages
@@ -36,6 +40,9 @@ export class ExpertUtilService {
     })
   }
 
+  /**
+   * Load state of expert of REDUX
+   */
   loadStateExpert(){
     this.storeService.getState('expertsState').subscribe((state: ExpertsState) => {
       this.experts = state.experts
@@ -46,6 +53,9 @@ export class ExpertUtilService {
     })
   }
 
+  /**
+   * Get all experts and keep on REDUX
+   */
   getAllExperts() {
     this.expertService.getAllExperts(this.filterExperts).subscribe(data => {
        this.storeUtilsExperts.changeListExperts(data.experts)
@@ -54,6 +64,4 @@ export class ExpertUtilService {
       this.snackBar.showSnack("Error al buscar los expertos")
     })
   }
-
-  
 }

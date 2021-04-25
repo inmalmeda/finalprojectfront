@@ -34,6 +34,10 @@ export class SelectorTagComponent implements OnInit{
     }
   }
 
+  /**
+   * Emit the value of tag selected
+   * @param event
+   */
   selectTag(event: any) {
 
     if (event.value != undefined && event.value != -1) {
@@ -49,14 +53,21 @@ export class SelectorTagComponent implements OnInit{
     }
   }
 
+  /**
+   * Emit the value of tag to delete
+   * @param event
+   */
   deleteTag(event: any) {
     let indexDelete = this.selectedTags.indexOf(this.tags.filter((tag) => tag.viewValue == event)[0].viewValue)
-    console.log(indexDelete,"dele")
+
     this.selectedTags.splice(indexDelete, 1)
 
     this.emitteTagDelete.emit(this.tags.filter((tag) => tag.viewValue == event)[0].value)
   }
 
+  /**
+   * Open a dialog to create a new tag
+   */
   addTag() {
     const dialogRef = this.dialog.open(DialogFormComponent, {
       width: '40%'

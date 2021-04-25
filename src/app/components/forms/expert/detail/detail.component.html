@@ -1,23 +1,35 @@
 <mat-tab-group dynamicHeight>
   <mat-tab label="Datos generales">
-    <div class="contentMax">
-        <span>
-          DISPONIBILIDAD
-        </span>
+    <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-tile [colspan]=1>
+        <mat-grid-tile-header>DISPONIBILIDAD</mat-grid-tile-header>
+        <div class="contentInput">
           <app-selector-general [data] = "availabilitySelector" (emitte) = "setAvailability($event)" [textPlaceholder]="this.expert.availability"></app-selector-general>
-        <span>
-          ESTADO
-        </span>
-            <app-selector-type-states (emitState) = "setState($event)" [states] = "states" [textPlaceholder]="this.expert.state"></app-selector-type-states>
-        <span>
-          VALORACIÓN
-        </span>
-            <app-selector-type-score (emitScore) = "setScore($event)" [textPlaceholder] = "this.expert.score"></app-selector-type-score>
-        <span>
-          ORIGEN
-        </span>
-            <app-selector-general (emitte) = "setOrigin($event)" [data] = "origin" [textPlaceholder] = "this.expert.origin"></app-selector-general>
-    </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]=1>
+        <mat-grid-tile-header>ESTADO</mat-grid-tile-header>
+        <div class="contentInput2">
+          <app-selector-type-states (emitState) = "setState($event)" [states] = "states" [textPlaceholder]="this.expert.state"></app-selector-type-states>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]=1>
+        <mat-grid-tile-header>VALORACIÓN</mat-grid-tile-header>
+        <div class="contentInput2">
+          <app-selector-type-score (emitScore) = "setScore($event)" [textPlaceholder] = "this.expert.score"></app-selector-type-score>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]=1>
+        <mat-grid-tile-header>ORIGEN</mat-grid-tile-header>
+        <div class="contentInput input4">
+          <app-selector-general (emitte) = "setOrigin($event)" [data] = "origin" [textPlaceholder] = "this.expert.origin"></app-selector-general>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
   <form [formGroup] = "expertForm" class="form">
     <div class="content">
       <div>
@@ -49,7 +61,7 @@
       </div>
     </div>
     <div class="content right">
-      <div class="titleNew inputMax">
+      <div>
         <span>
           ETIQUETAS
         </span>
@@ -62,18 +74,27 @@
 </form>
 </mat-tab>
   <mat-tab label="Observaciones">
-    <div class="contentMax">
-      <span>
-        OBSERVACIONES
-      </span>
-      <input type="text" (blur) = "setObservations($event)" value={{this.expert.observations}}/>
+    <mat-grid-list cols="3" rowHeight="100px">
+      <mat-grid-tile [colspan]=3>
+        <mat-grid-tile-header> OBSERVACIONES</mat-grid-tile-header>
+        <div class="contentMax">
+          <input class="inputMax" type="text" (blur) = "setObservations($event)" value={{this.expert.observations}}/>
+        </div>
+      </mat-grid-tile>
 
-      <div class="data">
-        <span>
-          MOTIVO DESCARTE
-        </span>
-        <app-selector-general (emitte) = "setStateReason($event)" [data] = "cause" [textPlaceholder] = "this.expert.stateReason"></app-selector-general>
-      </div>
-    </div>
+      <mat-grid-tile [colspan]=1>
+        <mat-grid-tile-header>MOTIVO DESCARTE</mat-grid-tile-header>
+        <div class="contentInput input5">
+          <app-selector-general (emitte) = "setStateReason($event)" [data] = "cause" [textPlaceholder] = "this.expert.modality"></app-selector-general>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]=2>
+        <mat-grid-tile-header class="title-grid">ESPECIFICA EL MOTIVO</mat-grid-tile-header>
+        <div class="contentInput">
+          <input class="inputMaxObs" type="text" (blur) = "setStateReasonSpecific($event)" value={{this.expert.stateReason}}/>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-tab>
 </mat-tab-group>

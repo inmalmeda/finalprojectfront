@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ACTION_CHANGE_LIMIT, ACTION_CHANGE_PAGES, ACTION_CHANGE_SHOWBUTTONNEW, ACTION_CHANGE_SUBTITLEHEADER, ACTION_CHANGE_TEXTBACK, ACTION_CHANGE_TEXTBUTTONNEW, ACTION_CHANGE_TITLEHEADER, ACTION_CHANGE_TOTALRESULT } from 'src/app/store/actions/actions.types';
+import { ACTION_CHANGE_LIMIT, ACTION_CHANGE_PAGES, ACTION_CHANGE_SHOWBUTTONNEW, ACTION_CHANGE_SUBTITLEHEADER, ACTION_CHANGE_TEXTBACK, ACTION_CHANGE_TEXTBUTTONNEW, ACTION_CHANGE_TITLEHEADER, ACTION_CHANGE_TOTALRESULT, ACTION_CHANGE_USER_EMAIL, ACTION_CHANGE_USER_NAME } from 'src/app/store/actions/actions.types';
 import { StoreService } from './store.service';
 
 @Injectable({
@@ -16,6 +16,28 @@ export class UtilsService {
     this.changeShowButton(show)
     this.changeTextBack(text)
   }
+
+  changeLooged(name: string, email:string) {
+    this.changeNameLooged(name)
+    this.changeEmailLooged(email)
+  }
+
+  changeNameLooged(name: string) {
+    this.storeService.updateState({
+      type: ACTION_CHANGE_USER_NAME,
+      payload: name
+    })
+  }
+
+  changeEmailLooged(email: string) {
+    this.storeService.updateState({
+      type: ACTION_CHANGE_USER_EMAIL,
+      payload: email
+    })
+  }
+
+
+
 
   changeTotalResult(total: number) {
     this.storeService.updateState({

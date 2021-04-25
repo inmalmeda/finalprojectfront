@@ -26,6 +26,9 @@ export class DialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  /**
+   * Function to delete the tag
+   */
   onClick(): void{
     this.tagService.deleteTagById(this.data.id).subscribe(data => {
       this.snackBar.showSnack(data.message)

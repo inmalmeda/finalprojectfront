@@ -19,6 +19,10 @@ export class TagNewPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Create a new tag
+   * @param tag
+   */
   createTag(tag: Tag) {
     this.tagService.createTag(tag)
       .subscribe((response) => {
@@ -29,5 +33,6 @@ export class TagNewPageComponent implements OnInit {
         err => {
         this.snackBar.showSnack("Error al crear la etiqueta")
     }
-  )}
+    )
+  }
 }

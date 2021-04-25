@@ -26,7 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
 
 import { TagsListComponent } from './views/tags-list/tags-list.component';
 import { TagPageComponent } from './pages/tag/tag-page/tag-page.component';
@@ -52,6 +53,10 @@ import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/exp
 import { DetailComponent } from './components/forms/expert/detail/detail.component';
 import { DetailHeaderComponent } from './components/forms/expert/detail-header/detail-header.component';
 import { ImageExpertComponent } from './components/logo-svg/image-expert/image-expert.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { LoginFormComponent } from './components/forms/login-form/login-form.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LogoWhiteComponent } from './components/logo-svg/logo-white/logo-white.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +87,10 @@ import { ImageExpertComponent } from './components/logo-svg/image-expert/image-e
     ExpertDetailPageComponent,
     DetailComponent,
     DetailHeaderComponent,
-    ImageExpertComponent
+    ImageExpertComponent,
+    LoginFormComponent,
+    LoginPageComponent,
+    LogoWhiteComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +111,8 @@ import { ImageExpertComponent } from './components/logo-svg/image-expert/image-e
     MatDialogModule,
     MatSnackBarModule,
     MatTabsModule,
+    MatGridListModule,
+    MatCardModule,
     StoreModule.forRoot(RootReducer, {}),
     StoreDevtoolsModule.instrument({
       maxAge:10

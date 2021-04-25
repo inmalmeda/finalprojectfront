@@ -19,6 +19,10 @@ export class TypeTagComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Emit the tag to delete
+   * @param event
+   */
   deleteTag(event: string) {
     this.emitteTagDelete.emit(event)
   }

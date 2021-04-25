@@ -14,6 +14,7 @@ export class FooterNavComponent implements OnInit {
   constructor(private storeService: StoreService) { }
 
   ngOnInit(): void {
+
     this.storeService.getState('userState').subscribe((state: UserState) => {
       this.name = state.name
       this.email = state.email

@@ -20,6 +20,10 @@ export class DialogFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Save a new tag into bbdd
+   * @param tag
+   */
   createTag(tag: Tag) {
     this.tagService.createTag(tag)
         .subscribe((response) => {

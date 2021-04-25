@@ -32,13 +32,20 @@ export class ExpertDetailPageComponent implements OnInit {
     }
   }
 
+  /**
+   * Update the principal data of expert
+   * @param event
+   */
   updatePrincipalExpert(event: any) {
     this.expert.name = event.name
     this.expert.nif = event.nif
     this.updateExpert()
   }
 
-
+  /**
+   * Update general data of expert
+   * @param event
+   */
   updateDataExpert(event: any) {
     this.expert.contactPhone = event.contactPhone
     this.expert.contactEmail = event.contactEmail
@@ -47,6 +54,9 @@ export class ExpertDetailPageComponent implements OnInit {
     this.updateExpert()
   }
 
+  /**
+   * Update data of expert on bbdd
+   */
   private updateExpert() {
     this.expertService.updateExpert(this.expert)
       .subscribe((response) => {

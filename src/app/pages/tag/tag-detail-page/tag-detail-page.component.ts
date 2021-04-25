@@ -25,6 +25,10 @@ export class TagDetailPageComponent implements OnInit {
     this.storeUtils.changeHeader('Información de la etiqueta', '', '', false,'Volver al listado de etiquetas')
   }
 
+  /**
+   * Update data of tag
+   * @param tag
+   */
   updateTag(tag: Tag) {
      this.tagService.updateTag(tag)
        .subscribe((response) => {

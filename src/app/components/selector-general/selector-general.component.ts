@@ -18,8 +18,11 @@ export class SelectorGeneralComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Emit the value selected
+   * @param event
+   */
   select(event: any) {
-
     if(event.value != undefined)
       this.emitte.emit(this.data.filter((data) => data.value == event.value)[0].viewValue)
   }

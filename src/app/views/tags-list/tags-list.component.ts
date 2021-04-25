@@ -25,6 +25,7 @@ export class TagsListComponent implements OnInit, DoCheck {
   buttonDelete = false
 
   @Output() manipulateEventPaginator: EventEmitter<PageEvent> = new EventEmitter<PageEvent>()
+  @Output() emitFilters: EventEmitter<boolean> = new EventEmitter<boolean>()
 
   constructor(private storeService: StoreService, private storeUtilsTags: UtilStateService,
               private tagUtilService: TagUtilService, public dialog: MatDialog, private router: Router) { }
@@ -39,24 +40,40 @@ export class TagsListComponent implements OnInit, DoCheck {
 
     this.storeService.getState('tagsState').subscribe((state: TagsState) => {
       this.tagList = state.tags
-     // this.filterTags.name = state.filterName
+      this.filterTags.name = state.filterName
     })
   }
 
+  /**
+   * Emit the pagination
+   * @param event
+   */
   getPaginatorData(event: PageEvent) :void{
     this.manipulateEventPaginator.emit(event)
   }
 
+  /**
+   * Emit the change of name filter
+   * @param event
+   */
   applyFilter(event: Event) {
     this.storeUtilsTags.changeFilterName((event.target as HTMLInputElement).value)
-    this.tagUtilService.getAllTags()
+    this.emitFilters.emit(true);
   }
 
+  /**
+   * Show button to delete
+   * @param event
+   */
   showButton(event: number) {
     this.mouseOver = event
     this.buttonDelete = true
   }
 
+  /**
+   * Delete a tag on bbdd
+   * @param idTag
+   */
   deleteTag(idTag: number) {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '40%',

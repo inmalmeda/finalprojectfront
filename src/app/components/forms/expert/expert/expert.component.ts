@@ -41,16 +41,23 @@ export class ExpertComponent implements OnInit {
     })
   }
 
+ /**
+   * Save the new data of expert if the form is valid
+   */
   saveExpert(): void{
     if (this.expertForm.valid) {
       this.manipulateExpert.emit(new NewExpert(this.expertForm.value.name, this.expertForm.value.nif, this.expertTags,
         this.expertAvailability, this.expertForm.value.contactPhone, this.expertForm.value.contactEmail, this.expertForm.value.contactTown,
-        this.expertForm.value.contantLinkedin))
+        this.expertForm.value.contactLinkedin))
     } else {
       this.snackBar.showSnack("Los datos son inválidos")
     }
   }
 
+   /**
+   * Add a new tag on the tag´s list of expert
+   * @param id
+   */
   addTag(id: number) {
     if (id == -1)
       this.getAllTagsToSelector()
@@ -58,6 +65,10 @@ export class ExpertComponent implements OnInit {
     this.expertTags.push(this.tagsExist.filter((tag) => tag.id == id)[0])
   }
 
+   /**
+   * Delete a tag of the tag´s list of expert
+   * @param id
+   */
   deleteTag(id: number) {
 
     let tag = this.tagsExist.filter((tag) => tag.id == id)[0]
@@ -70,10 +81,18 @@ export class ExpertComponent implements OnInit {
     this.expertTags.splice(indexDelete, 1)
   }
 
+
+  /**
+   * Set data about availability of expert
+   * @param data
+   */
   setAvailability(data: string) {
     this.expertAvailability = data
   }
 
+   /**
+   * Method private to get all existing tags to show on the selector
+   */
   private getAllTagsToSelector() {
     this.tagsSelector.splice(0, this.tagsSelector.length)
 

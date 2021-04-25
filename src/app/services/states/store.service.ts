@@ -10,15 +10,15 @@ export class StoreService {
   constructor(private store: Store<any>) { }
 
     /**
-     * Metodo para obtener cualquier STATE del STORE de la app
+     * Get every states of REDUX
      */
      getState(state: string) {
       return this.store.select(state)
      }
 
     /**
-     * Metodo  para despachar acciones
-     * @param action que despacha y es escuchada por el REDUCER
+     * Change every state of REDUX
+     * @param action
      */
      updateState(action: Action) {
       this.store.dispatch(action)

@@ -19,6 +19,10 @@ export class TypeScoreComponent implements OnInit {
         this.text = this.score.toString()
   }
 
+  /**
+   * Set a color depending of score's value
+   * @returns
+   */
   getColorTag() {
     switch (this.score){
       case 15:
@@ -35,7 +39,5 @@ export class TypeScoreComponent implements OnInit {
         this.text = 'Falta'
         return '#C7C8CD';
     }
-
   }
-
 }

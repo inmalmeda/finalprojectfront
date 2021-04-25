@@ -26,6 +26,9 @@ export class HeaderComponent implements OnInit {
     this.loadHeader()
   }
 
+  /**
+   * Change titles on REDUX when user choose add new data
+   */
   createRegiter() {
     if (this.textButton == 'Nuevo Experto') {
       this.storeUtils.changeHeader('Nuevo experto', '', '', false, 'Volver a la lista de expertos >')
@@ -37,6 +40,9 @@ export class HeaderComponent implements OnInit {
     this.textButtonBack = this.title == 'Nuevo experto' ? 'Volver a la lista de expertos >' : 'Volver a la lista de etiquetas >'
   }
 
+  /**
+   * Change titles on REDUX when user choose return back
+   */
   goBack() {
     if (this.title == 'Nuevo experto') {
       this.storeUtils.changeHeader('Lista de Expertos', 'CANDIDATOS', 'Nuevo Experto', true,'')
@@ -49,6 +55,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  /**
+   * Load data of titles
+   */
   private loadHeader() {
     this.storeService.getState('titleHeaderState').subscribe((state: TitleHeaderState) => {
       this.title = state.titleMain

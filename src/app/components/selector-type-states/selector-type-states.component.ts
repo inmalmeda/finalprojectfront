@@ -10,23 +10,21 @@ import { ExpertUtilService } from 'src/app/services/expert/manage/expert-util.se
 })
 export class SelectorTypeStatesComponent implements OnInit {
 
- /*  states = [
-    {value: TypeStates[TypeStates['Validado']], viewValue: 'Validado'},
-    {value: TypeStates[TypeStates['Pendiente']], viewValue: 'Pendiente'},
-    {value: TypeStates[TypeStates['Todos']], viewValue: 'Todos'}
-  ];
- */
   @Input() states: any
 
   @Input() textPlaceholder: string = ''
 
   @Output() emitState: EventEmitter<string> = new EventEmitter<string>()
 
-  constructor(private storeUtilsExperts: UtilStateService, private expertUtilService : ExpertUtilService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Emit the state selected
+   * @param event
+   */
   selectState(event: any) {
     if (event.value == undefined || event.value == TypeStates[TypeStates['Todos']]) {
       this.emitState.emit('')
@@ -34,12 +32,6 @@ export class SelectorTypeStatesComponent implements OnInit {
       this.emitState.emit(event.value)
     }
 
-  /*   if (event.value == undefined || event.value == TypeStates[TypeStates['Todos']]) {
-      this.storeUtilsExperts.changeFilterState('');
-    } else {
-      this.storeUtilsExperts.changeFilterState(event.value);
-    }
-    this.expertUtilService.getAllExperts(); */
   }
 
 }

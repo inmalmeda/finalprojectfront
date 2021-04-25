@@ -22,23 +22,21 @@ export class SelectorTypeScoreComponent implements OnInit {
 
   @Input() textPlaceholder: string = ''
 
-  constructor(private storeUtilsExperts: UtilStateService, private expertUtilService : ExpertUtilService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Emit the score selected
+   * @param event
+   */
   selectScore(event: any) {
     if (event.value == undefined) {
       this.emitScore.emit('')
     } else {
       this.emitScore.emit(event.value)
     }
-   /*  if (event.value == undefined) {
-      this.storeUtilsExperts.changeFilterScore('');
-    } else {
-      this.storeUtilsExperts.changeFilterScore(event.value);
-    }
-    this.expertUtilService.getAllExperts(); */
   }
 
 }

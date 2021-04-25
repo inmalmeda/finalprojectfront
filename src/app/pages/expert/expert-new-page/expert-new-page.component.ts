@@ -18,6 +18,10 @@ export class ExpertNewPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Create a new expert
+   * @param expert
+   */
   createExpert(expert: NewExpert) {
     this.expertService.createExpert(expert)
       .subscribe((response) => {

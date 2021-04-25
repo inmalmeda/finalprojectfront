@@ -2,6 +2,42 @@
   display:flex
 }
 
+.mat-grid-tile .mat-grid-tile-header, .mat-grid-tile .mat-grid-tile-footer{
+  background-color: white;
+  color: #A3A3B4;
+  font-size: 14px;
+  justify-content:left;
+}
+
+.mat-grid-tile{
+  margin-left:20px;
+  margin-right: 20px;
+}
+
+.title-grid{
+  margin-left: 15px;
+}
+
+.contentInput{
+  margin-top:30px;
+  width: 90%;
+}
+
+.contentInput2{
+  margin-top:11px;
+  width: 75%;
+  margin-right: 30px;
+}
+
+.input4{
+  width: 80%;
+}
+
+.input5{
+  width: 95%;
+  margin-top:55px;
+}
+
 .contentMax{
   width:100%;
   margin-top:15px;
@@ -45,4 +81,21 @@ input:hover
 .inputMed{
   width: 50%;
   display: inline-block;
+}
+
+
+.inputMax{
+  margin-top:20px;
+  margin-left:10px;
+  margin-right: 10px;
+  width: 95%;
+  border:solid 1px #A3A3B4;
+}
+
+
+.inputMaxObs{
+  margin-top:8px;
+  width: 100%;
+  border:solid 1px #A3A3B4;
+  margin-left:0px;
 }

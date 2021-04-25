@@ -14,10 +14,16 @@ export class ExpertService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * GET all expert with filters
+   * @param filters
+   * @returns
+   */
   getAllExperts(filters : FiltersExpert):Observable<any>
   {
 
-    this.url = 'http://localhost:8080/api/expertos?'
+    //this.url = 'http://localhost:8080/api/expertos?'
+    this.url = 'api/expertos?'
 
     if (filters.name != '')
       this.url = this.url + `name=${filters.name}&`
@@ -36,6 +42,11 @@ export class ExpertService {
   }
 
 
+  /**
+   * Post a new expert
+   * @param expert
+   * @returns
+   */
   createExpert(expert: NewExpert): Observable<any>{
     let body = {
       name: expert.name,
@@ -49,9 +60,15 @@ export class ExpertService {
       state: "Pendiente",
       score:0
     }
-    return this.http.post('http://localhost:8080/api/expertos', body)
+    //return this.http.post('http://localhost:8080/api/expertos', body)
+    return this.http.post('api/expertos', body)
   }
 
+  /**
+   * Update an expert
+   * @param expert
+   * @returns
+   */
   updateExpert(expert: Expert): Observable<any>{
     let body = {
       id: expert.id,
@@ -80,7 +97,8 @@ export class ExpertService {
       state: expert.state,
       tags: expert.tags
     }
-    return this.http.put('http://localhost:8080/api/expertos', body)
+   // return this.http.put('http://localhost:8080/api/expertos', body)
+   return this.http.put('api/expertos', body)
   }
 }
 

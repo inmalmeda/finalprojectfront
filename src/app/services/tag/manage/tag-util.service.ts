@@ -22,12 +22,17 @@ export class TagUtilService {
   constructor(private storeService: StoreService, private tagService: TagService,
         private storeUtils: UtilsService, private storeUtilsTags: UtilStateService,private snackBar: SnackBarService) { }
 
-
+/**
+   * Load states of tag data of REDUX
+   */
   loadStates() {
     this.loadStatePagination()
     this.loadStateTag()
   }
 
+  /**
+   * Load state of pagination of REDUX
+   */
   loadStatePagination(){
     this.storeService.getState('paginationState').subscribe((state: PaginationState) => {
       this.filterTags.page = state.pages
@@ -36,6 +41,9 @@ export class TagUtilService {
     })
   }
 
+ /**
+   * Load state of tag of REDUX
+   */
   loadStateTag(){
     this.storeService.getState('tagsState').subscribe((state: TagsState) => {
       this.tags = state.tags
@@ -43,6 +51,9 @@ export class TagUtilService {
     })
   }
 
+  /**
+   * Get all tags and keep on REDUX
+   */
   getAllTags() {
    this.tagService.getAllTags(this.filterTags).subscribe(data => {
       this.storeUtilsTags.changeListTags(data.tags)

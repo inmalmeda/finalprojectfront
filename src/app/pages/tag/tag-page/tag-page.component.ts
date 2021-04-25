@@ -29,18 +29,30 @@ export class TagPageComponent implements OnInit {
     this.storeUtils.changePagination(this.lowValue, this.limit)
 
     this.storeService.getState('paginationState').subscribe((state: PaginationState) => {
-     /*  this.filterTags.page = state.pages
-      this.filterTags.limit = state.limit */
       this.totalTags = state.total
     })
     this.tagUtilService.getAllTags()
   }
 
+  /**
+   * Set paginator data and get all tags
+   * @param event
+   */
   getPaginatorData(event: PageEvent): void{
     this.lowValue = event.pageIndex * event.pageSize;
-    this.limit = this.lowValue + event.pageSize;
+    this.limit = event.pageSize;
     this.storeUtils.changePagination(this.lowValue, this.limit)
     this.tagUtilService.getAllTags()
   }
 
+  /**
+   * Change the filters to get all tags
+   * @param event
+   */
+  getFilter(event: boolean) {
+    if (event) {
+      this.storeUtils.changePagination(0, 5)
+      this.tagUtilService.getAllTags()
+    }
+  }
 }

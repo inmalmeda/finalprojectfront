@@ -1,4 +1,4 @@
-<app-experts-list></app-experts-list>
+<app-experts-list (emitFilters)="getFilter($event)"></app-experts-list>
 <mat-paginator [length]="totalExperts"
 [pageSize]="filterExperts.page"
 [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="getPaginatorData($event)" >

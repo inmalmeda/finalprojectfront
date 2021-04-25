@@ -1,0 +1,63 @@
+.containerLeft{
+  display:inline-block;
+  width:40%;
+  height: 100%;
+  position: absolute;
+  box-shadow: 2px 0px 16px rgba(117, 114, 150, 0.15);
+  background: linear-gradient(to bottom right, #FFE81D  , #00D1C5);
+}
+
+.containerRight{
+  display:inline-block;
+  width:35%;
+  position: absolute;
+  right:15%;
+  top:20%;
+}
+
+.containerLeft span {
+  color:white;
+  font-weight: 600;
+  position: relative;
+  font-size:30px;
+  top:30px;
+  margin:50px 0px 0px 50px;
+  width: 100%;
+}
+
+.titleh1{
+  position: relative;
+  top:30%;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 20px 90px 20px 90px;
+  line-height: 40px;
+  color:white;
+ }
+
+ .titleh1 div{
+  margin-top:30px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+
+.containerRight div{
+  color:#0ED28C;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.dataCheck{
+  margin-top:15px;
+  width:30%;
+}
+
+.dataCheck span{
+  font-size: 12px;
+  display: block;
+  border-bottom: 0.5px solid;
+  margin-top:5px;
+}
+

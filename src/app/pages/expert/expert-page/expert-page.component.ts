@@ -27,19 +27,32 @@ export class ExpertPageComponent implements OnInit {
     this.storeUtils.changePagination(this.lowValue, this.limit)
 
     this.storeService.getState('paginationState').subscribe((state: PaginationState) => {
-    /*   this.filterExperts.page = state.pages
-      this.filterExperts.limit = state.limit */
       this.totalExperts = state.total
     })
     this.expertUtilService.getAllExperts()
   }
 
 
+  /**
+   * Set paginator data and get all experts
+   * @param event
+   */
   getPaginatorData(event: PageEvent) :void{
     this.lowValue = event.pageIndex * event.pageSize;
-    this.limit = this.lowValue + event.pageSize;
+    this.limit = event.pageSize;
     this.storeUtils.changePagination(this.lowValue, this.limit)
     this.expertUtilService.getAllExperts()
+  }
+
+  /**
+   * Change the filters to get all experts
+   * @param event
+   */
+  getFilter(event: boolean) {
+    if (event) {
+      this.storeUtils.changePagination(0, 5)
+      this.expertUtilService.getAllExperts()
+    }
   }
 
 }
