@@ -4,6 +4,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/expert-detail-page.component';
 import { ExpertNewPageComponent } from './pages/expert/expert-new-page/expert-new-page.component';
 import { ExpertPageComponent } from './pages/expert/expert-page/expert-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-page.component';
 import { TagNewPageComponent } from './pages/tag/tag-new-page/tag-new-page.component';
@@ -21,33 +22,27 @@ const routes: Routes = [
   },
   {
     path: 'experts',
-    component: ExpertPageComponent,
-    canActivate: [AuthGuard]
+    component: ExpertPageComponent
   },
   {
     path: 'experts/:id',
-    component: ExpertDetailPageComponent,
-    canActivate: [AuthGuard]
+    component: ExpertDetailPageComponent
   },
   {
     path: 'experts/new/expert',
-    component: ExpertNewPageComponent,
-    canActivate: [AuthGuard]
+    component: ExpertNewPageComponent
   },
   {
     path: 'tags',
-    component: TagPageComponent,
-    canActivate: [AuthGuard]
+    component: TagPageComponent
   },
   {
     path: 'tags/:id',
-    component: TagDetailPageComponent,
-    canActivate: [AuthGuard]
+    component: TagDetailPageComponent
   },
   {
     path: 'tags/new/tag',
-    component: TagNewPageComponent,
-    canActivate: [AuthGuard]
+    component: TagNewPageComponent
   }
 ];
 

@@ -25,15 +25,15 @@ export class LoginPageComponent implements OnInit, OnDestroy{
   loginUser(user: User) {
 
     console.log("llego2", user)
-    
+
     this.authService.login(new User(user.email, user.password))
       .subscribe((response) => {
 
         console.log("llego", response)
         if (response.response.response == 'OK') {
+          console.log("llego", response)
           this.utilsService.changeLooged(response.nameUser, response.emailUser)
           this.authService.setLoggedIn(true)
-
           this.router.navigate(['/experts'])
         } else {
           this.manageError(response.response.message)
