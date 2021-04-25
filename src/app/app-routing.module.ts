@@ -14,31 +14,46 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo:'/experts'
+    redirectTo:'/login'
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
+    path: 'home',
+    component: HomePageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'experts',
-    component: ExpertPageComponent
+    component: ExpertPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'experts/:id',
-    component: ExpertDetailPageComponent
+    component: ExpertDetailPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'experts/new/expert',
-    component: ExpertNewPageComponent
+    component: ExpertNewPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'tags',
-    component: TagPageComponent
+    component: TagPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'tags/:id',
-    component: TagDetailPageComponent
+    component: TagDetailPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'tags/new/tag',
-    component: TagNewPageComponent
+    component: TagNewPageComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
