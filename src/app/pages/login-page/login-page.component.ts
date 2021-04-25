@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit, OnDestroy{
 
   @Output() emitLogged: EventEmitter<Boolean> = new EventEmitter<Boolean>()
 
-  constructor(private authService: AuthService, private router: Router, private utilsService: UtilsService,
+  constructor(private authService: AuthService, private utilsService: UtilsService,
     private snackBar: SnackBarService) { }
 
   ngOnInit(): void {

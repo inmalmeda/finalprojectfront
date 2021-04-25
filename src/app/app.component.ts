@@ -12,17 +12,11 @@ export class AppComponent implements OnInit{
 
   title = 'proyectofinal-front'
 
-  logged = false
-
   constructor(private router: Router){}
-
 
   ngOnInit(): void {
   }
 
-  setLogged() {
-    this.logged = true;
-    this.router.navigate(['/experts'])
-  }
+
 
 }

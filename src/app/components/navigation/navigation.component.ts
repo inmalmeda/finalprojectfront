@@ -17,6 +17,7 @@ export class NavigationComponent{
 
   isExpert = true
   isTag = false
+  logged = false
 
   titleMain = ''
   titleSecondary = ''
@@ -38,6 +39,9 @@ export class NavigationComponent{
     })
   }
 
+  setLogged() {
+    this.logged = true
+  }
 
 
   /**
