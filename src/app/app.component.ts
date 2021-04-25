@@ -11,10 +11,16 @@ export class AppComponent implements OnInit{
 
   title = 'proyectofinal-front'
 
+  logged = false
+
   constructor(){}
 
 
   ngOnInit(): void {
+  }
+
+  setLogged() {
+    this.logged = true;
   }
 
 }

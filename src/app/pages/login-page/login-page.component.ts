@@ -16,6 +16,8 @@ export class LoginPageComponent implements OnInit, OnDestroy{
 
   authSubscription: Subscription = new Subscription()
 
+  @Output() emitLogged: EventEmitter<Boolean> = new EventEmitter<Boolean>()
+
   constructor(private authService: AuthService, private router: Router, private utilsService: UtilsService,
     private snackBar: SnackBarService) { }
 
@@ -30,7 +32,7 @@ export class LoginPageComponent implements OnInit, OnDestroy{
           console.log("llego", response)
           this.utilsService.changeLooged(response.nameUser, response.emailUser)
           this.authService.setLoggedIn(true)
-          this.router.navigate(['/home'])
+          this.emitLogged.emit(true)
         } else {
           this.manageError(response.response.message)
         }

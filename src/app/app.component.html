@@ -1,2 +1,4 @@
-<app-login-page></app-login-page>
-<!--<app-navigation></app-navigation> -->
+<app-login-page *ngIf="!logged" (emitLogged) = "setLogged()"></app-login-page>
+
+
+<app-navigation *ngIf="logged"></app-navigation>
