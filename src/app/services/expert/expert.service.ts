@@ -23,7 +23,7 @@ export class ExpertService {
   {
 
     //this.url = 'http://localhost:8080/api/expertos?'
-    this.url = 'api/expertos?'
+    this.url = 'https://finalprojectinma.herokuapp.com/api/expertos?'
 
     if (filters.name != '')
       this.url = this.url + `name=${filters.name}&`
@@ -61,7 +61,7 @@ export class ExpertService {
       score:0
     }
     //return this.http.post('http://localhost:8080/api/expertos', body)
-    return this.http.post('api/expertos', body)
+    return this.http.post('https://finalprojectinma.herokuapp.com/api/expertos', body)
   }
 
   /**
@@ -98,7 +98,7 @@ export class ExpertService {
       tags: expert.tags
     }
    // return this.http.put('http://localhost:8080/api/expertos', body)
-   return this.http.put('api/expertos', body)
+   return this.http.put('https://finalprojectinma.herokuapp.com/api/expertos', body)
   }
 }
 

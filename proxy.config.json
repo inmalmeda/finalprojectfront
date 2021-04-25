@@ -1,6 +1,6 @@
 {
   "/api/*": {
-      "target": "https://finalprojectinma.herokuapp.com/",
+      "target": "",
       "secure": false,
       "logLevel": "debug",
       "changeOrigin": false

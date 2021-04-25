@@ -17,8 +17,6 @@ export class NavigationComponent{
 
   isExpert = true
   isTag = false
-  @Input()
-  logged: boolean = false
 
   titleMain = ''
   titleSecondary = ''
@@ -40,9 +38,7 @@ export class NavigationComponent{
     })
   }
 
-  changeLooged() {
-    this.logged = this.authService.loggedIn
-  }
+
 
   /**
    * Change titles on REDUX

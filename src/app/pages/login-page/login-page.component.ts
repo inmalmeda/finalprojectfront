@@ -16,9 +16,6 @@ export class LoginPageComponent implements OnInit, OnDestroy{
 
   authSubscription: Subscription = new Subscription()
 
-
-  @Output() emitLog: EventEmitter<boolean> = new EventEmitter<boolean>()
-
   constructor(private authService: AuthService, private router: Router, private utilsService: UtilsService,
     private snackBar: SnackBarService) { }
 
@@ -31,7 +28,7 @@ export class LoginPageComponent implements OnInit, OnDestroy{
         if (response.response.response == 'OK') {
           this.utilsService.changeLooged(response.nameUser, response.emailUser)
           this.authService.setLoggedIn(true)
-          this.emitLog.emit(true)
+        
           this.router.navigate(['/experts'])
         } else {
           this.manageError(response.response.message)
