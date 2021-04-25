@@ -3,6 +3,6 @@
       "target": "https://finalprojectinma.herokuapp.com/",
       "secure": false,
       "logLevel": "debug",
-      "changeOrigin": true
+      "changeOrigin": false
   }
 }
