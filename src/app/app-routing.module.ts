@@ -22,13 +22,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent,
-    canActivate: [AuthGuard]
+    component: HomePageComponent
   },
   {
     path: 'experts',
-    component: ExpertPageComponent,
-    canActivate: [AuthGuard]
+    component: ExpertPageComponent
   },
   {
     path: 'experts/:id',
