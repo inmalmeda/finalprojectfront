@@ -30,7 +30,7 @@ export class NavigationComponent{
   );
 
   constructor(private breakpointObserver: BreakpointObserver, private storeUtils: UtilsService,
-    private storeService: StoreService, private authService: AuthService) {
+    private storeService: StoreService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -41,6 +41,7 @@ export class NavigationComponent{
 
   setLogged() {
     this.logged = true
+    this.router.navigate(['/experts'])
   }
 
 
