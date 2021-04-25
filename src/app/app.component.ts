@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './services/user/auth.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit{
 
   logged = false
 
-  constructor(){}
+  constructor(private router: Router){}
 
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit{
 
   setLogged() {
     this.logged = true;
+    this.router.navigate(['/experts'])
   }
 
 }

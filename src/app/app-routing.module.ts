@@ -4,7 +4,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { ExpertDetailPageComponent } from './pages/expert/expert-detail-page/expert-detail-page.component';
 import { ExpertNewPageComponent } from './pages/expert/expert-new-page/expert-new-page.component';
 import { ExpertPageComponent } from './pages/expert/expert-page/expert-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TagDetailPageComponent } from './pages/tag/tag-detail-page/tag-detail-page.component';
 import { TagNewPageComponent } from './pages/tag/tag-new-page/tag-new-page.component';
@@ -19,10 +18,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
-  },
-  {
-    path: 'home',
-    component: HomePageComponent
   },
   {
     path: 'experts',
