@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { StoreService } from 'src/app/services/states/store.service';
+import { AuthService } from 'src/app/services/user/auth.service';
 import UserState from 'src/app/store/config/userState.interface';
 
 @Component({
@@ -11,7 +13,11 @@ export class FooterNavComponent implements OnInit {
 
   name: string = ''
   email: string = ''
-  constructor(private storeService: StoreService) { }
+
+   @Output() manipulateLogOut: EventEmitter<Boolean> = new EventEmitter<Boolean>()
+
+  constructor(private storeService: StoreService, private authService: AuthService, private router: Router) { }
+
 
   ngOnInit(): void {
 
@@ -21,4 +27,7 @@ export class FooterNavComponent implements OnInit {
     })
   }
 
+  logout() {
+    this.manipulateLogOut.emit(true)
+  }
 }

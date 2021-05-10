@@ -22,7 +22,7 @@ export class TagService {
   getAllTags(filters : FiltersTag):Observable<any>
   {
 
-   // this.url = 'http://localhost:8080/api/etiquetas?'
+     //this.url = 'http://localhost:8080/api/etiquetas?'
     this.url = 'https://finalprojectinma.herokuapp.com/api/etiquetas?'
 
     if (filters.name != '')

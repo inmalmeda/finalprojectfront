@@ -41,7 +41,6 @@
     </mat-cell>
   </ng-container>
 
-
   <!-- Score Column -->
   <ng-container matColumnDef="score">
     <mat-header-cell *matHeaderCellDef>
@@ -56,7 +55,6 @@
       <app-type-score [score] = "element.score"></app-type-score>
     </mat-cell>
   </ng-container>
-
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row;let i = index  columns: displayedColumns;" class="row"

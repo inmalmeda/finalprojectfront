@@ -30,20 +30,26 @@ export class NavigationComponent{
   );
 
   constructor(private breakpointObserver: BreakpointObserver, private storeUtils: UtilsService,
-    private storeService: StoreService, private router: Router) {
+    private storeService: StoreService, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit(): void {
     this.storeService.getState('titleHeaderState').subscribe((state: TitleHeaderState) => {
       this.actionTitle = state.textButtonNew
     })
+
+    if (localStorage.getItem('Token')) {
+      this.logged = true
+      this.authService.setLoggedIn(true)
+      this.router.navigate(['/experts'])
+    }
+
   }
 
   setLogged() {
     this.logged = true
     this.router.navigate(['/experts'])
   }
-
 
   /**
    * Change titles on REDUX
@@ -57,6 +63,15 @@ export class NavigationComponent{
     this.changeColorSelected(routePath)
     this.storeUtils.changeHeader(this.titleMain, this.titleSecondary, this.actionTitle, true,'')
   }
+
+  logout(logout: Boolean) {
+    this.logged = false
+    localStorage.removeItem('Token')
+    this.authService.setLoggedIn(false)
+    this.router.navigate(['/login'])
+  }
+
+
 
   /**
    * Change text color of nav

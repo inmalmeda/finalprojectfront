@@ -57,6 +57,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { LoginFormComponent } from './components/forms/login-form/login-form.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LogoWhiteComponent } from './components/logo-svg/logo-white/logo-white.component';
+import { RegisterFormComponent } from './components/forms/register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { LogoWhiteComponent } from './components/logo-svg/logo-white/logo-white.
     ImageExpertComponent,
     LoginFormComponent,
     LoginPageComponent,
-    LogoWhiteComponent
+    LogoWhiteComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,

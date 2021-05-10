@@ -27,7 +27,7 @@
         Etiquetas
       </a>
     </mat-nav-list>
-    <app-footer-nav></app-footer-nav>
+    <app-footer-nav (manipulateLogOut) = "logout($event)"></app-footer-nav>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar  id="titleNavMain">
@@ -42,7 +42,5 @@
   </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<app-login-page *ngIf="!logged" (emitLogged) = "setLogged()"></app-login-page>
-
-
+<app-login-page *ngIf="!logged" (emitLogged) = "setLogged()">
+</app-login-page>

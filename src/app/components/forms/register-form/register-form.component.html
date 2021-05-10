@@ -1,0 +1,32 @@
+<form [formGroup] = "registerForm" (submit) = "register()">
+  <div>
+    <div class="titleNew">
+      <span>
+        Nombre completo *
+      </span>
+        <input matInput formControlName = "name"/>
+    </div>
+    <div class="titleNew">
+      <span>
+        Email *
+      </span>
+        <input matInput formControlName = "email"/>
+    </div>
+    <div class="titleNew">
+      <span>
+        Contraseña *
+      </span>
+        <input matInput formControlName = "password" type="password"/>
+    </div>
+    <div class="titleNew">
+      <span>
+        Confirmación de contraseña *
+      </span>
+        <input matInput formControlName = "password2" type="password"/>
+    </div>
+      <button mat-raised-button class= "buttonPrimary" type="submit">
+        Aceptar</button>
+    </div>
+</form>
+<button mat-raised-button class= "buttonPrimary" (click) = "returnBack()">
+  Cancelar</button>

@@ -1,4 +1,3 @@
-
   <div class=containerLeft>
     <span>
       <app-logo-white></app-logo-white> Experts
@@ -9,26 +8,13 @@
 </div>
 
 <div class="containerRight">
-  <div>
+  <div *ngIf="!register">
     <h2>Bienvenido/a</h2>
-    <app-login-form  (manipulateUser) = "loginUser($event)"></app-login-form>
+    <app-login-form  (manipulateUser) = "loginUser($event)" (manipulateRegister) = "navigateRegister($event)"></app-login-form>
   </div>
-  <div class= "dataCheck">
-    <span>
-      Datos de prueba:
-    </span>
-    <span>
-      Email: inma@hotmail.com
-      <span> Constraseña: 12345678</span>
-    </span>
-    <span>
-      Email: paula@hotmail.com
-      <span>Constraseña: 12345678</span>
-    </span>
-    <span>
-      Email: javi@hotmail.com
-      <span>Constraseña: 12345678</span>
-    </span>
+  <div *ngIf="register">
+    <h2>Inserte sus datos</h2>
+    <app-register-form (manipulateUser) = "registerUser($event)" (goLogin) ="navigateLogin($event)"></app-register-form>
   </div>
 </div>
 

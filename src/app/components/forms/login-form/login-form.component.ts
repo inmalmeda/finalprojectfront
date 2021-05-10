@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user.model';
 import { SnackBarService } from 'src/app/services/component/snack-bar/snack-bar.service';
 import { AuthService } from 'src/app/services/user/auth.service';
@@ -16,6 +17,7 @@ export class LoginFormComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({})
 
   @Output() manipulateUser: EventEmitter<User> = new EventEmitter<User>()
+  @Output() manipulateRegister: EventEmitter<Boolean> = new EventEmitter<Boolean>()
 
   constructor(private authService: AuthService, private formBuilder: FormBuilder, private snackBar: SnackBarService) { }
 
@@ -35,7 +37,12 @@ export class LoginFormComponent implements OnInit {
       this.manipulateUser.emit(new User(this.loginForm.value.email, this.loginForm.value.password));
     } else {
       this.authService.setLoggedIn(false)
-      this.snackBar.showSnack("You must provide a email and a valid password")
+      this.snackBar.showSnack("Inserte email y contraseña válidos")
     }
   }
+
+  navigateRegister() {
+    this.manipulateRegister.emit(true)
+  }
+
 }

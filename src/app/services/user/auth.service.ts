@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { User } from 'src/app/models/user/user.model';
 
 import { HttpClient } from '@angular/common/http'
+import { NewUser } from 'src/app/models/user/newUser/new-user.Model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,29 @@ export class AuthService {
       password: user.password
     }
 
-    /* return this.http.post('http://localhost:8080/api/user', body) */
+    //return this.http.post('http://localhost:8080/auth/login', body)
 
-    return this.http.post('https://finalprojectinma.herokuapp.com/api/user', body)
+    return this.http.post('https://finalprojectinma.herokuapp.com/auth/login', body)
   }
+
+  register(user: NewUser): Observable<any> {
+    let body = {
+      username: user.name,
+      email: user.email,
+      password: user.password
+    }
+
+    //return this.http.post('http://localhost:8080/auth/register', body)
+
+    return this.http.post('https://finalprojectinma.herokuapp.com/auth/register', body)
+  }
+
+
+
+
+
+
+
 
 
   //Setter and Getter of isLoggedIn
