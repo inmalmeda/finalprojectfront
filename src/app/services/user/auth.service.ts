@@ -25,9 +25,9 @@ export class AuthService {
       password: user.password
     }
 
-    //return this.http.post('http://localhost:8080/auth/login', body)
+    return this.http.post('http://localhost:8080/auth/login', body)
 
-    return this.http.post('https://finalprojectinma.herokuapp.com/auth/login', body)
+    //return this.http.post('https://finalprojectinma.herokuapp.com/auth/login', body)
   }
 
   register(user: NewUser): Observable<any> {
@@ -37,17 +37,10 @@ export class AuthService {
       password: user.password
     }
 
-    //return this.http.post('http://localhost:8080/auth/register', body)
+    return this.http.post('http://localhost:8080/auth/register', body)
 
-    return this.http.post('https://finalprojectinma.herokuapp.com/auth/register', body)
+    //return this.http.post('https://finalprojectinma.herokuapp.com/auth/register', body)
   }
-
-
-
-
-
-
-
 
 
   //Setter and Getter of isLoggedIn

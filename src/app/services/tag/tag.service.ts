@@ -22,8 +22,8 @@ export class TagService {
   getAllTags(filters : FiltersTag):Observable<any>
   {
 
-     //this.url = 'http://localhost:8080/api/etiquetas?'
-    this.url = 'https://finalprojectinma.herokuapp.com/api/etiquetas?'
+    this.url = 'http://localhost:8080/api/etiquetas?'
+    //this.url = 'https://finalprojectinma.herokuapp.com/api/etiquetas?'
 
     if (filters.name != '')
       this.url = this.url + `name=${filters.name}&`
@@ -43,8 +43,8 @@ export class TagService {
    */
   deleteTagById(id : number): Observable<any> {
 
-    //this.url = `http://localhost:8080/api/etiquetas/${id}`
-    this.url = `https://finalprojectinma.herokuapp.com/api/etiquetas/${id}`
+    this.url = `http://localhost:8080/api/etiquetas/${id}`
+    //this.url = `https://finalprojectinma.herokuapp.com/api/etiquetas/${id}`
     return this.http.delete(this.url)
   }
 
@@ -58,8 +58,8 @@ export class TagService {
       name: tag.name,
       creator: tag.creator
     }
-    //return this.http.post('http://localhost:8080/api/etiquetas', body)
-    return this.http.post('https://finalprojectinma.herokuapp.com/api/etiquetas', body)
+    return this.http.post('http://localhost:8080/api/etiquetas', body)
+   // return this.http.post('https://finalprojectinma.herokuapp.com/api/etiquetas', body)
   }
 
   /**
@@ -74,8 +74,8 @@ export class TagService {
       creator: tag.creator,
       created_at: tag.created_at
     }
-   // return this.http.put('http://localhost:8080/api/etiquetas', body)
-    return this.http.put('https://finalprojectinma.herokuapp.com/api/etiquetas', body)
+    return this.http.put('http://localhost:8080/api/etiquetas', body)
+   // return this.http.put('https://finalprojectinma.herokuapp.com/api/etiquetas', body)
   }
 
 }
