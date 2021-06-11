@@ -27,7 +27,7 @@ export class AuthService {
 
     //return this.http.post('http://localhost:8080/auth', body)
 
-    return this.http.post('https://expertproject.herokuapp.com/auth/login', body)
+    return this.http.post('https://expertproject.herokuapp.com/auth', body)
   }
 
   register(user: NewUser): Observable<any> {
@@ -39,7 +39,7 @@ export class AuthService {
 
     //return this.http.post('http://localhost:8080/api/register', body)
 
-    return this.http.post('https://expertproject.herokuapp.com/auth/register', body)
+    return this.http.post('https://expertproject.herokuapp.com/api/register', body)
   }
 
 
