@@ -22,8 +22,8 @@ export class ExpertService {
   getAllExperts(filters : FiltersExpert):Observable<any>
   {
 
-    this.url = 'http://localhost:8080/api/expertos?'
-    //this.url = 'https://finalprojectinma.herokuapp.com/api/expertos?'
+    //this.url = 'http://localhost:8080/api/expertos?'
+    this.url = 'https://expertproject.herokuapp.com/api/expertos?'
 
     if (filters.name != '')
       this.url = this.url + `name=${filters.name}&`
@@ -60,8 +60,8 @@ export class ExpertService {
       state: "Pendiente",
       score:0
     }
-    return this.http.post('http://localhost:8080/api/expertos', body)
-    //return this.http.post('https://finalprojectinma.herokuapp.com/api/expertos', body)
+    //return this.http.post('http://localhost:8080/api/expertos', body)
+    return this.http.post('https://expertproject.herokuapp.com/api/expertos', body)
   }
 
   /**
@@ -97,8 +97,8 @@ export class ExpertService {
       state: expert.state,
       tags: expert.tags
     }
-   return this.http.put('http://localhost:8080/api/expertos', body)
-  // return this.http.put('https://finalprojectinma.herokuapp.com/api/expertos', body)
+  // return this.http.put('http://localhost:8080/api/expertos', body)
+   return this.http.put('https://expertproject.herokuapp.com/api/expertos', body)
   }
 }
 
